@@ -1,0 +1,102 @@
+[
+    {
+      "job_title": "Помощник кровельщика",
+      "location": "Нюрнберг, Германия",
+      "roof_type": "Двускатные крыши",
+      "salary": "2 000 netto",
+      "positions_available": 2,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Маляр",
+      "location": "Берлин, Германия",
+      "work_type": "Внутренняя и наружная покраска",
+      "salary": "2 200 netto",
+      "positions_available": 3,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Электрик",
+      "location": "Мюнхен, Германия",
+      "work_type": "Проводка и установка оборудования",
+      "salary": "2 500 netto",
+      "positions_available": 1,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Плотник",
+      "location": "Франкфурт, Германия",
+      "work_type": "Изготовление и монтаж деревянных конструкций",
+      "salary": "2 300 netto",
+      "positions_available": 2,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Сантехник",
+      "location": "Гамбург, Германия",
+      "work_type": "Установка и ремонт водопроводных систем",
+      "salary": "2 400 netto",
+      "positions_available": 2,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Каменщик",
+      "location": "Дрезден, Германия",
+      "work_type": "Кладка кирпича и блоков",
+      "salary": "2 200 netto",
+      "positions_available": 3,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Штукатур",
+      "location": "Штутгарт, Германия",
+      "work_type": "Внутренняя и наружная отделка",
+      "salary": "2 100 netto",
+      "positions_available": 2,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Укладчик плитки",
+      "location": "Кёльн, Германия",
+      "work_type": "Укладка керамической и каменной плитки",
+      "salary": "2 300 netto",
+      "positions_available": 1,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Разнорабочий",
+      "location": "Дюссельдорф, Германия",
+      "work_type": "Общие строительные работы",
+      "salary": "2 000 netto",
+      "positions_available": 4,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Монтажник окон",
+      "location": "Бремен, Германия",
+      "work_type": "Установка и ремонт окон",
+      "salary": "2 300 netto",
+      "positions_available": 2,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    },
+    {
+      "job_title": "Сварщик",
+      "location": "Эссен, Германия",
+      "work_type": "Сварка металлических конструкций",
+      "salary": "2 600 netto",
+      "positions_available": 1,
+      "contact": "telegram",
+      "image": "/images/primary.jpg"
+    }
+  ]
+  
