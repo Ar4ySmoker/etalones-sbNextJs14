@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const managerShema = new mongoose.Schema({
   name:{
@@ -26,6 +27,9 @@ const vacancyShema = new mongoose.Schema({
     type: String
   },
   workPrice:{
+    type: String
+  },
+  image:{
     type: String
   }
 })

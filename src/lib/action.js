@@ -1,4 +1,3 @@
-import { title } from "process";
 import {  Vacancy } from "./models";
 import { connectToDB } from "./utils";
 
@@ -11,6 +10,7 @@ export const fetchVacancy = async () => {
         return vacancy.map(vacancy => ({
             _id: vacancy._id.toString(),
             title: vacancy.title,
+            image: vacancy.image,
           }));
     } catch (err) {
         console.log(err);
