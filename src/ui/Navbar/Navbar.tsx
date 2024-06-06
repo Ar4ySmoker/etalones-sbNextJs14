@@ -1,4 +1,4 @@
-import Logo from '@/app/svg/Logo.svg'
+import Logo from '@/svg/Logo.svg'
 import cls from './Navbar.module.css'
 import Link from 'next/link'
 export default function Navbar(){
@@ -13,8 +13,12 @@ export default function Navbar(){
         <li><details>
           <summary>Вакансии</summary>
           <ul className="p-2 bg-gradient-red">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
+
           </ul>
         </details></li>
         <li>
@@ -45,8 +49,11 @@ export default function Navbar(){
       <li > <details>
           <summary>Вакансии</summary>
           <ul className="p-2 bg-gradient-red">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
+          <li><Link href='/vacancy'>Смотреть все </Link></li>
           </ul>
         </details></li>
       <li>
