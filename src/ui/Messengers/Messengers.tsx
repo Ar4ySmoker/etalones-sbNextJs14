@@ -12,7 +12,7 @@ export default function Messengers(){
               height="50"
               viewBox="0 0 200 200"
               fill="none">
-              <g clip-path="url(#clip0_34_2)">
+              <g >
                 <path
                   d="M99.9239 199.236C154.941 199.236 199.542 154.635 199.542 99.6179C199.542 44.6005 154.941 0 99.9239 0C44.9064 0 0.305969 44.6005 0.305969 99.6179C0.305969 154.635 44.9064 199.236 99.9239 199.236Z"
                   fill="#7C509A" />
@@ -69,9 +69,9 @@ export default function Messengers(){
                   x2="67.2354"
                   y2="16.0471"
                   gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#EEA054" />
-                  <stop offset="0.502762" stop-color="#D64763" />
-                  <stop offset="1" stop-color="#B62A99" />
+                  <stop  />
+                  <stop offset="0.502762"  />
+                  <stop offset="1"  />
                 </linearGradient>
               </defs>
             </svg>

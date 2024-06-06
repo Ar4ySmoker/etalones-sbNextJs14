@@ -2,7 +2,7 @@ import Messengers from "../Messengers/Messengers";
 
 export default function Footer(){
     return(
-        <footer className="footer footer-center p-10 bg-black text-primary-content">
+        <footer className="footer footer-center p-10 bg-myblack-dafault text-primary-content">
    <nav>
     <Messengers/>
   </nav>
