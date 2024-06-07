@@ -1,19 +1,22 @@
+import Card from "@/ui/Card/Card";
 import Footer from "@/ui/Footer/Footer";
+import FormCallBack from "@/ui/FormCallBack/FormCallBack";
+import Managers from "@/ui/Managers/Managers";
 import Navbar from "@/ui/Navbar/Navbar";
-import { fetchVacancy } from "@/lib/action";
+import Useful from "@/ui/Useful/Useful";
+import VacancyFresh from "@/ui/VacancyFresh/VacancyFresh";
+
 
 export default async function Page() {
-  const vacancies = await fetchVacancy();
 
   return (
     <>
       <Navbar />
-      <div>Contacts</div>
-      <ul>
-        {vacancies.map((manager) => (
-          <li key={manager._id}>{manager.title}</li>
-        ))}
-      </ul>
+      <Managers/>
+      <FormCallBack/>
+
+      <Useful/>
+      <Card count={3}/>
       <Footer />
     </>
   );

@@ -6,7 +6,7 @@
       "salary": "2 000 netto",
       "positions_available": 2,
       "contact": "telegram",
-      "image": "/vacancy/exkavatorT1/exkavatorT1.jpg"
+      "image": "/images/brgdN1.jpg"
     },
     {
       "job_title": "Маляр",
@@ -14,8 +14,10 @@
       "work_type": "Внутренняя и наружная покраска",
       "salary": "2 200 netto",
       "positions_available": 3,
-      "contact": "telegram",
-      "image": "/images/primary.jpg"
+      "telegram": "https://t.me/Ivan_etalones",
+      "viber": "https://t.me/Ivan_etalones",
+      "whatsapp": "https://t.me/Ivan_etalones",
+      "image": "/images/plitochnikD1.jpg"
     },
     {
       "job_title": "Электрик",
@@ -24,7 +26,7 @@
       "salary": "2 500 netto",
       "positions_available": 1,
       "contact": "telegram",
-      "image": "/images/primary.jpg"
+      "image": "/images/brgdT1.jpg"
     },
     {
       "job_title": "Плотник",
@@ -33,7 +35,7 @@
       "salary": "2 300 netto",
       "positions_available": 2,
       "contact": "telegram",
-      "image": "/images/primary.jpg"
+      "image": "/images/bruschatkaD1.jpg"
     },
     {
       "job_title": "Сантехник",
@@ -42,7 +44,7 @@
       "salary": "2 400 netto",
       "positions_available": 2,
       "contact": "telegram",
-      "image": "/images/primary.jpg"
+      "image": "/images/brushtkaT1.jpg"
     },
     {
       "job_title": "Каменщик",
@@ -51,7 +53,7 @@
       "salary": "2 200 netto",
       "positions_available": 3,
       "contact": "telegram",
-      "image": "/images/primary.jpg"
+      "image": "/images/electrD1.jpg"
     },
     {
       "job_title": "Штукатур",
@@ -59,8 +61,9 @@
       "work_type": "Внутренняя и наружная отделка",
       "salary": "2 100 netto",
       "positions_available": 2,
-      "contact": "telegram",
-      "image": "/images/primary.jpg"
+      "contact": "https://t.me/Ivan_etalones",
+      "phone": "+37369460354",
+      "image": "/images/electrL1.jpg"
     },
     {
       "job_title": "Укладчик плитки",
