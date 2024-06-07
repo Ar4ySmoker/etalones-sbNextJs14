@@ -13,7 +13,7 @@ const VacancyFresh: React.FC = () => {
         <div className='flex flex-col'>
             <h2 className='text-center py-5 text-2xl'>Актуальные вакансии на {getCurrentDate()}</h2>
             <div className="flex flex-wrap gap-3 justify-center">
-                <Card/>
+                <Card count={5}/>
                 
             </div>
                 <Button text={"Посмотреть все"}/>
