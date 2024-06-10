@@ -1,0 +1,46 @@
+[
+    {
+        "_id":"1",
+        "name":"Иван",
+        "phone":"+37360281829",
+        "telegram":"https://t.me/Ivan_etalones",
+        "whatsapp":"https://t.me/Ivan_etalones",
+        "viber":"https://t.me/Ivan_etalones",
+        "email":"emailemail.com",
+        "image":"/images/managers/Ivan.jpg",
+        "dascr":"Работа по прокладке интернет кабеля"
+      },
+    {
+        "_id":"2",
+        "name":"Лилия",
+        "phone":"+37361243797",
+        "telegram":"https://t.me/liliaetalon",
+        "whatsapp":"https://t.me/liliaetalon",
+        "viber":"https://t.me/liliaetalon",
+        "email":"emailemail.com",
+        "image":"/images/managers/Lilia.jpg",
+        "dascr":"Работа по прокладке интернет кабеля"
+    },
+    {
+        "_id":"3",
+        "name":"Татьяна",
+        "phone":"+37361243797",
+        "telegram":"https://t.me/liliaetalon",
+        "whatsapp":"https://t.me/liliaetalon",
+        "viber":"https://t.me/liliaetalon",
+        "email":"emailemail.com",
+        "image":"/images/managers/Tatiana.jpg",
+        "dascr":"Работа по прокладке интернет кабеля"
+    },
+    {
+        "_id":"4",
+        "name":"Диана",
+        "phone":"+37361243797",
+        "telegram":"https://t.me/liliaetalon",
+        "whatsapp":"https://t.me/liliaetalon",
+        "viber":"https://t.me/liliaetalon",
+        "email":"emailemail.com",
+        "image":"/images/managers/Diana1.jpg",
+        "dascr":"Работа по прокладке интернет кабеля"
+    }
+]
