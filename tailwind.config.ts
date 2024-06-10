@@ -9,7 +9,9 @@ const config = {
     './src/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
-    extend: {
+    extend: {zIndex: {
+      '100': '100',
+    },
       backgroundImage:  {
         'gradient-red': 'linear-gradient(to right, rgba(97, 28, 21, 1), rgba(225, 42, 24, 1))',
       },

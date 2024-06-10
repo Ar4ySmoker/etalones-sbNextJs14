@@ -1,6 +1,13 @@
+'use client'
 import React from 'react';
 import Card from "../Card/Card";
 import Button from '../Buttons/Button';
+import Title from '../Title/Title';
+import { Vacancy } from "@/lib/definitions";
+import vacanciesData from "@/lib/vacancy.json"; // Import vacanciesData here
+import { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 function getCurrentDate() {
     const date = new Date();
@@ -9,14 +16,27 @@ function getCurrentDate() {
 }
 
 const VacancyFresh: React.FC = () => {
+    const [vacancies, setVacancies] = useState<Vacancy[]>([]);
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const category = searchParams.get('category');
+  
+    useEffect(() => {
+        if (category) {
+            const filteredVacancies = vacanciesData.filter((vacancy: Vacancy) => vacancy.category === category); // Explicitly type vacancy as Vacancy
+            setVacancies(filteredVacancies);
+        } else {
+            setVacancies(vacanciesData);
+        }
+    }, [category]);
     return (
-        <div className='flex flex-col'>
-            <h2 className='text-center py-5 text-2xl'>Актуальные вакансии на {getCurrentDate()}</h2>
+        <div className='flex flex-col '>
+            <Title text={`Актуальные вакансии на ${getCurrentDate()}`} />
             <div className="flex flex-wrap gap-3 justify-center">
-                <Card count={5}/>
+                <Card count={5} vacancies={vacancies}/>
                 
             </div>
-                <Button text={"Посмотреть все"}/>
+               <Link href={'/vacancy'} className='mx-auto'><Button text={"Посмотреть все вакансии"}/></Link> 
         </div>
     );
 }
