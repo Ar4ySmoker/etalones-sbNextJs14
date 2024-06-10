@@ -150,3 +150,20 @@ export type PartnersField = {
   name: string;
   companyName: string;
 }
+export interface Vacancy {
+  _id: string;
+  job_title: string;
+  location: string;
+  roof_type?: string;
+  salary: string;
+  homePrice: string;
+  auto: string;
+  documents: string;
+  positions_available: number;
+  contact: string;
+  telegram: string;
+  viber: string;
+  whatsapp: string;
+  image: string;
+  category: string;
+}

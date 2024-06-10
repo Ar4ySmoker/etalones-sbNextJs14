@@ -1,91 +1,100 @@
 import Logo from '@/svg/Logo.svg'
-import cls from './Navbar.module.css'
 import Link from 'next/link'
-export default function Navbar(){
-    return(
-<div className='navbar text-white bg-gradient-red'>
-        <div className="navbar-start ">
-    <div className="dropdown ">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </div>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gradient-red rounded-box w-52">
-        <li><details>
-          <summary>Вакансии</summary>
-          <ul className="p-2 bg-gradient-red">
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
+import { Instagram } from '@/svg/instagram'
+import { Telegram } from '@/svg/telegram'
+import { Viber } from '@/svg/viber'
 
-          </ul>
-        </details></li>
-        <li>
-        <details>
-          <summary>Полезное
-</summary>
-          <ul className="p-2 bg-gradient-red">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-        </li>
-        <li><details>
-          <summary>Соискателям</summary>
-          <ul className="p-2 bg-gradient-red">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details></li>
-        <li><a href="">Контакты</a></li>
-      </ul>
-    </div>
-    <Link href='/'><Logo /></Link>
-
-        </div>
-         <div className="navbar-center hidden lg:flex ">
-    <ul className="menu menu-horizontal px-1 ">
-      <li > <details>
-          <summary>Вакансии</summary>
-          <ul className="p-2 bg-gradient-red">
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
-          <li><Link href='/vacancy'>Смотреть все </Link></li>
-          </ul>
-        </details></li>
-      <li>
-        <details>
-          <summary>Полезное
-</summary>
-          <ul className="p-2 bg-gradient-red">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Новости</a></li>
-      <li><details>
-          <summary>Соискателям</summary>
-          <ul className="p-2 bg-gradient-red">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details></li>
-        <li><Link href="/contacts">Контакты</Link></li>
-    </ul>
-        </div>
-        <div className="navbar-end">
-        <div className="dropdown dropdown-end">
-  <div tabIndex={0} role="button" className="btn m-1">Click</div>
-  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
-  </ul>
-</div>
-        </div>
+export default function Navbar() {
+    return (
+        <div className='navbar text-white bg-gradient-red text-xl sticky top-0 z-100'>
+            <div className="navbar-start">
+                <div className="dropdown ">
+                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[9999] p-2 shadow bg-gradient-red">
+                        <li >
+                            <details>
+                                <summary ><p className='text-xl'>Вакансии</p></summary>
+                                <ul className="p-2 bg-gradient-red z-10">
+                                    <li><Link href='/vacancy'>Смотреть все </Link></li>
+                                    <li><Link href='/vacancy?category=internal'>Внутренняя отделка</Link></li>
+                                    <li><Link href='/vacancy?category=outdoor'>Работа на улице</Link></li>
+                                    <li><Link href='/vacancy?category=no-experience'>Без опыта</Link></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>Полезное</summary>
+                                <ul className="p-2 bg-gradient-red z-10">
+                                    <li><a>Submenu 1</a></li>
+                                    <li><a>Submenu 2</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>Соискателям</summary>
+                                <ul className="p-2 bg-gradient-red z-10">
+                                    <li><a>Submenu 1</a></li>
+                                    <li><a>Submenu 2</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li><a href="">Контакты</a></li>
+                    </ul>
+                </div>
+                <Link href='/'><Logo /></Link>
+            </div>
+            <div className="navbar-center hidden lg:flex text-3xl">
+                <ul className="menu menu-horizontal px-1">
+                    <li>
+                        <details>
+                        <summary ><p className='text-xl'>Вакансии</p></summary>
+                        <ul className="p-2 bg-gradient-red z-10 w-max">
+                                <li><Link href='/vacancy'>Смотреть все </Link></li>
+                                <li><Link href='/vacancy?category=internal'>Внутренняя отделка</Link></li>
+                                <li><Link href='/vacancy?category=outdoor'>Работа на улице</Link></li>
+                                <li><Link href='/vacancy?category=no-experience'>Без опыта</Link></li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                        <summary ><p className='text-xl'>Полезное</p></summary>
+                            <ul className="p-2 bg-gradient-red z-10 w-max">
+                                <li><a>Документы</a></li>
+                                <li><a>Законодательство</a></li>
+                                <li><a>Быт</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li className='text-xl'><Link href="/news">Новости</Link></li>
+                    <li>
+                        <details>
+                        <summary ><p className='text-xl'>Соискателям</p></summary>
+                            <ul className="p-2 bg-gradient-red z-10">
+                                <li><a>Строительным фирмам</a></li>
+                                <li><a>Рекрутерам</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li className='text-xl'><Link href="/contacts">Контакты</Link></li>
+                </ul>
+            </div>
+            <div className="navbar-end">
+                <div className="dropdown dropdown-end">
+                    <div tabIndex={0} role="button" className="btn m-1">Соц. Сети</div>
+                    <ul tabIndex={0} className="dropdown-content w-max menu p-2 shadow bg-gradient-red z-10 rounded-box">
+                        <li><a href="" className="transition-transform transform hover:scale-110"><Telegram width={50} height={50} /></a></li>
+                        <li><a href="" className="transition-transform transform hover:scale-110"><Viber width={50} height={50} /></a></li>
+                        <li><a href="" className="transition-transform transform hover:scale-110"><Instagram width={50} height={50} /></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }

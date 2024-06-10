@@ -2,7 +2,7 @@ import Button from "../Buttons/Button";
 
 export default function FormCallBack() {
     return (
-        <div className="w-full mx-auto">
+        <div className="container mx-auto px-4">
             <div className=" w-full">
                 <h3 className="text-2xl">Оставьте свой номер телефона и мы сразу свяжемся с Вами.</h3>
                 <p>Назначьте время разговора с нами и мы поможем Вам выбрать вакансию и ответим на Ваши вопросы.</p>
