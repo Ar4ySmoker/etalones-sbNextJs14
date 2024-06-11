@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { Instagram } from '@/svg/instagram'
 import { Telegram } from '@/svg/telegram'
 import { Viber } from '@/svg/viber'
+import { Phone } from '@/svg/phone'
+
 
 export default function Navbar() {
     return (
@@ -31,8 +33,8 @@ export default function Navbar() {
                                 <summary>Полезное</summary>
                                 <ul className="p-2 bg-gradient-red z-10">
                                     <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
+                                    <li><Link href="/forRecrut">Рекрутерам</Link></li>
+                                    </ul>
                             </details>
                         </li>
                         <li>
@@ -78,7 +80,7 @@ export default function Navbar() {
                         <summary ><p className='text-xl'>Соискателям</p></summary>
                             <ul className="p-2 bg-gradient-red z-10">
                                 <li><a>Строительным фирмам</a></li>
-                                <li><a>Рекрутерам</a></li>
+                                <li><Link href="/forRecrut">Рекрутерам</Link></li>
                             </ul>
                         </details>
                     </li>
@@ -87,7 +89,7 @@ export default function Navbar() {
             </div>
             <div className="navbar-end">
                 <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn m-1">Соц. Сети</div>
+                    <div tabIndex={0} role="button" className="btn m-1">Соц. Сети<Phone width={25} height={25}/></div>
                     <ul tabIndex={0} className="dropdown-content w-max menu p-2 shadow bg-gradient-red z-10 rounded-box">
                         <li><a href="" className="transition-transform transform hover:scale-110"><Telegram width={50} height={50} /></a></li>
                         <li><a href="" className="transition-transform transform hover:scale-110"><Viber width={50} height={50} /></a></li>
