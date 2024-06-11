@@ -4,7 +4,7 @@ export default function Page() {
     return (
         <>
         <Navbar/>
-        <div id="tmpl">
+        {/* <div id="tmpl">
         <div className="slide-1 w-full">
           <div>
             <div className="header flex">
@@ -72,7 +72,7 @@ export default function Page() {
             <a href="#zayavka" className="btn bg-green-500 text-white py-2 px-4 rounded mt-4">Подать заявку</a>
           </div>
         </div>
-      </div>
+      </div> */}
         </>
       
     );

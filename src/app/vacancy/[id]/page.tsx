@@ -21,7 +21,6 @@ import Navbar from '@/ui/Navbar/Navbar';
 // };
 
 async function fetchVacancy(id: string): Promise<Vacancy | null> {
-  
   const vacancy = vacancies.find((v: Vacancy) => v._id === id);
   return vacancy || null;
 }
@@ -43,9 +42,10 @@ export default async function Page({ params }: PageProps) {
   if (!vacancy) {
     redirect('/404'); // Перенаправление на страницу 404, если вакансия не найдена
   }
-  const documents = vacancy.documents.split(',');
-  const homeDet = vacancy.home_descr.split(',');
-  const workDet = vacancy.work_descr.split(",")
+  const documents = vacancy.documents ? vacancy.documents.split(',') : [];
+  const homeDet = vacancy.home_descr ? vacancy.home_descr.split(',') : [];
+  const workDet = vacancy.work_descr ? vacancy.work_descr.split(',') : [];
+  
 
   return (
 
@@ -56,11 +56,11 @@ export default async function Page({ params }: PageProps) {
         <div className='flex justify-between gap-3 flex-wrap'>
           <div className='py-10 flex flex-col justify-between'>
             <h1 className='text-3xl text-red-700'>{vacancy.job_title}</h1>
-            <Breadcrumbs title={vacancy.job_title} />
+            <Breadcrumbs title={vacancy.job_title || 'Нет заголовка'} />
             <h3 className='text-xl text-red-800'>📍 Местоположение: <strong>{vacancy.location}</strong></h3>
           </div>
           <div className='md:p-10'>
-            <Image src={vacancy.image} width={300} height={300} alt={vacancy.job_title} />
+            <Image src={vacancy.image || '/default-image.png'} width={300} height={300} alt={vacancy.job_title || "noImage"} />
           </div>
         </div>
         <div className='flex flex-wrap gap-5'>
@@ -117,7 +117,7 @@ export default async function Page({ params }: PageProps) {
           <p>Контакт менеджера:</p>
           <div className="avatar flex flex-col items-center">
             <div className="rounded-full">
-              <Image src={vacancy.managerImg} width={200} height={200} alt='manager' />
+              <Image src={vacancy.managerImg || "/default-image.png"} width={200} height={200} alt='manager' />
             </div>
           </div>
           <p>{vacancy.contact}</p>

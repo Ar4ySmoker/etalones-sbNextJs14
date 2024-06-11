@@ -10,7 +10,6 @@ export default function CarouselManager(){
   </div> 
   <div className="carousel-item">
   <Image width={500} height={500}  src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg" alt="Burger" />
-    <img />
   </div> 
   <div className="carousel-item">
   <Image width={500} height={500} src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg" alt="Burger"  />
