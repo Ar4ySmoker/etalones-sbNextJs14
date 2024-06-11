@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({ count, vacancies }) => {
             {vacancies.slice(0, count).map((vacancy: Vacancy, index: number) => (
                 <div key={index} className="card w-96 glass m-4">
                     <figure>
-                        <Image width={400} height={400} src={vacancy.image} alt={vacancy.job_title} />
+                        <Image width={400} height={400} src={vacancy.image || '/default-image.png'} alt={vacancy.job_title || 'noImg'} />
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title font-bold">{vacancy.job_title}</h2>
