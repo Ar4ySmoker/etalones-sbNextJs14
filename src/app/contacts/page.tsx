@@ -12,7 +12,7 @@ import { Vacancy } from "@/lib/definitions";
 import vacanciesData from "@/lib/vacancy.json"; // Import vacanciesData here
 import Title from "@/ui/Title/Title";
 
-export default function Page() {
+export default  function Page() {
   const [vacancies, setVacancies] = useState<Vacancy[]>([]);
   const router = useRouter();
   const searchParams = useSearchParams();

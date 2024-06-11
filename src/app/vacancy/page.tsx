@@ -8,7 +8,9 @@ import vacanciesData from '@/lib/vacancy.json';
 import { Vacancy } from '@/lib/definitions';
 import Title from '@/ui/Title/Title';
 
+
 export default function VacancyPage() {
+    
     const [vacancies, setVacancies] = useState<Vacancy[]>([]);
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -27,7 +29,7 @@ export default function VacancyPage() {
         <>
             <Navbar />
 <Title text={'Наши вакансии'}/>
-            <div className="tabs justify-center mb-6">
+            <div className="tabs justify-center flex flex-wrap mb-6 font-bold">
                 <a className={`tab ${!category ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy')}>Все</a>
                 <a className={`tab ${category === 'internal' ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy?category=indor')}>Внутренняя отделка</a>
                 <a className={`tab ${category === 'outdoor' ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy?category=outdoor')}>Улица/Земляные работы</a>

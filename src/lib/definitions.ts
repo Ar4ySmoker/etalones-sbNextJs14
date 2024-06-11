@@ -151,19 +151,23 @@ export type PartnersField = {
   companyName: string;
 }
 export interface Vacancy {
-  _id: string;
-  job_title: string;
-  location: string;
+  _id?: string;
+  job_title?: string;
+  location?: string;
   roof_type?: string;
-  salary: string;
-  homePrice: string;
-  auto: string;
-  documents: string;
-  positions_available: number;
-  contact: string;
-  telegram: string;
-  viber: string;
-  whatsapp: string;
-  image: string;
-  category: string;
+  salary?: string;
+  homePrice?: string;
+  auto?: string;
+  documents?: string;
+  positions_available?: number;
+  contact?: string;
+  managerImg?: string;
+  telegram?: string;
+  viber?: string;
+  whatsapp?: string;
+  image?: string;
+  category?: string;
+  work_descr?: string;
+  home_descr?: string;
+  grafik?: string;
 }
