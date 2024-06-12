@@ -171,3 +171,24 @@ export interface Vacancy {
   home_descr?: string;
   grafik?: string;
 }
+
+export interface News {
+  _id?: string;
+  title?: string;
+  category?: string;
+  image?: string;
+  description?: string;
+  date?: string;
+  content?: {
+    article?: {
+      title?: string;
+      image?: string;
+      content?: string;
+    }[];
+  };
+  h1?: string;
+  h2?: string;
+  h3?: string;
+  minDescr?: string;
+  source?: string;
+}

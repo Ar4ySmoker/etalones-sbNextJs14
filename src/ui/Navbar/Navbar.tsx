@@ -19,34 +19,35 @@ export default function Navbar() {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[9999] p-2 shadow bg-gradient-red">
                         <li >
                             <details>
-                                <summary ><p className='text-xl'>Вакансии</p></summary>
+                                <summary ><p className='text-xl w-max'>Вакансии</p></summary>
                                 <ul className="p-2 bg-gradient-red z-10">
-                                    <li><Link href='/vacancy'>Смотреть все </Link></li>
-                                    <li><Link href='/vacancy?category=internal'>Внутренняя отделка</Link></li>
-                                    <li><Link href='/vacancy?category=outdoor'>Работа на улице</Link></li>
-                                    <li><Link href='/vacancy?category=no-experience'>Без опыта</Link></li>
+                                    <li ><Link href='/vacancy'><p className='text-xl w-max'>Смотреть все</p> </Link></li>
+                                    <li><Link href='/vacancy?category=internal'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
+                                    <li><Link href='/vacancy?category=outdoor'><p className='text-xl  w-max'>Работа на улице</p></Link></li>
+                                    <li><Link href='/vacancy?category=no-experience'><p className='text-xl  w-max'>Без опыта</p></Link></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li className='text-xl'><Link href="/news"><p className='text-xl  w-max'>Новости</p></Link></li>
+
+                        <li>
+                            <details>
+                                <summary><p className='text-xl  w-max'>Полезное</p></summary>
+                                <ul className="p-2 bg-gradient-red z-10">
+                                <li><Link href="/forRecrut"><p className='text-xl  w-max'>Рекрутерам</p></Link></li>
                                 </ul>
                             </details>
                         </li>
                         <li>
                             <details>
-                                <summary>Полезное</summary>
+                                <summary><p className='text-xl  w-max'>Соискателям</p></summary>
                                 <ul className="p-2 bg-gradient-red z-10">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><Link href="/forRecrut">Рекрутерам</Link></li>
-                                    </ul>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary>Соискателям</summary>
-                                <ul className="p-2 bg-gradient-red z-10">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
+                                <li><Link href="/forRecrut"><p className='text-xl  w-max'>Рекрутерам</p></Link></li>
+                                <li><Link href="/forRecrut"><p className='text-xl  w-max'>Рекрутерам</p></Link></li>
                                 </ul>
                             </details>
                         </li>
-                        <li><a href="">Контакты</a></li>
+                        <li><a href=""><p className='text-xl  w-max'>Контакты</p></a></li>
                     </ul>
                 </div>
                 <Link href='/'><Logo /></Link>
@@ -55,32 +56,32 @@ export default function Navbar() {
                 <ul className="menu menu-horizontal px-1">
                     <li>
                         <details>
-                        <summary ><p className='text-xl'>Вакансии</p></summary>
+                        <summary ><p className='text-xl w-max'>Вакансии</p></summary>
                         <ul className="p-2 bg-gradient-red z-10 w-max">
-                                <li><Link href='/vacancy'>Смотреть все </Link></li>
-                                <li><Link href='/vacancy?category=internal'>Внутренняя отделка</Link></li>
-                                <li><Link href='/vacancy?category=outdoor'>Работа на улице</Link></li>
-                                <li><Link href='/vacancy?category=no-experience'>Без опыта</Link></li>
+                                <li><Link href='/vacancy'><p className='text-xl w-max'>Смотреть все</p></Link></li>
+                                <li><Link href='/vacancy?category=internal'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
+                                <li><Link href='/vacancy?category=outdoor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
+                                <li><Link href='/vacancy?category=no-experience'><p className='text-xl w-max'>Без опыта</p></Link></li>
                             </ul>
                         </details>
                     </li>
                     <li>
                         <details>
-                        <summary ><p className='text-xl'>Полезное</p></summary>
+                        <summary ><p className='text-xl w-max'>Полезное</p></summary>
                             <ul className="p-2 bg-gradient-red z-10 w-max">
-                                <li><a>Документы</a></li>
-                                <li><a>Законодательство</a></li>
-                                <li><a>Быт</a></li>
+                                <li><a><p className='text-xl w-max'>Документы</p></a></li>
+                                <li><a><p className='text-xl w-max'>Законодательство</p></a></li>
+                                <li><a><p className='text-xl w-max'>Быт</p></a></li>
                             </ul>
                         </details>
                     </li>
                     <li className='text-xl'><Link href="/news">Новости</Link></li>
                     <li>
                         <details>
-                        <summary ><p className='text-xl'>Соискателям</p></summary>
+                        <summary ><p className='text-xl w-max'>Соискателям</p></summary>
                             <ul className="p-2 bg-gradient-red z-10">
-                                <li><a>Строительным фирмам</a></li>
-                                <li><Link href="/forRecrut">Рекрутерам</Link></li>
+                                <li><a><p className='text-xl w-max'>Строительным фирмам</p></a></li>
+                                <li><Link href="/forRecrut"><p className='text-xl w-max'>Рекрутерам</p></Link></li>
                             </ul>
                         </details>
                     </li>

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body{
+  overflow-x: hidden;
+}
+
 :root {
   --bg-gradient-red: linear-gradient(to right, rgba(97, 28, 21, 1), rgba(225, 42, 24, 1));
   --bg-color-red: #AF0707;
