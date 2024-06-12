@@ -14,10 +14,10 @@ export default function Managers(){
           <div key={manager._id} className="flex flex-col items-center my-5">
             <div className="avatar flex flex-col items-center">
               <div className="rounded-full">
-                <Image width={150} height={150} src={manager.image} alt="Ivan" />
+                <Image width={120} height={120} src={manager.image} alt="Ivan" />
               </div>
-                <p className="font-bold text-3xl py-3">{manager.name}</p>
-                <p className="font-semibold text-xl py-1">{manager.phone}</p>
+                <p className="font-bold text-2xl py-3">{manager.name}</p>
+                <p className="font-semibold text-md py-1">{manager.phone}</p>
             </div>
             <div className="flex gap-2 w-max justify-between mt-4">
  <a href={manager.viber} className="transition-transform transform hover:scale-110 "><Viber width={30} height={30} /></a>

@@ -12,13 +12,7 @@ import Managers from '@/ui/Managers/Managers';
 import Footer from '@/ui/Footer/Footer';
 import Navbar from '@/ui/Navbar/Navbar';
 
-// type Vacancy = {
-//   _id: string;
-//   job_title: string;
-//   location: string;
-//   image: string;
 
-// };
 
 async function fetchVacancy(id: string): Promise<Vacancy | null> {
   const vacancy = vacancies.find((v: Vacancy) => v._id === id);
@@ -56,7 +50,7 @@ export default async function Page({ params }: PageProps) {
         <div className='flex justify-between gap-3 flex-wrap'>
           <div className='py-10 flex flex-col justify-between'>
             <h1 className='text-3xl text-red-700'>{vacancy.job_title}</h1>
-            <Breadcrumbs title={vacancy.job_title || 'Нет заголовка'} />
+            <Breadcrumbs title={vacancy.job_title || 'Нет заголовка'} prev='/vacancy' prevText='Вакансии' />
             <h3 className='text-xl text-red-800'>📍 Местоположение: <strong>{vacancy.location}</strong></h3>
           </div>
           <div className='md:p-10'>

@@ -15,7 +15,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ count, vacancies }) => {
     return (
-        <div className="flex flex-wrap justify-center ">
+        <div className="flex flex-wrap justify-center w-full">
             {vacancies.slice(0, count).map((vacancy: Vacancy, index: number) => (
                 <div key={index} className="card w-96 glass m-4">
                     <figure>
