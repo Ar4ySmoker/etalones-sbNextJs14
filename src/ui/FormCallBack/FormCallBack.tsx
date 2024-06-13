@@ -72,7 +72,7 @@ export default function FormCallBack() {
             <div className="w-full">
                 <h3 className="text-2xl">Оставьте свой номер телефона и мы сразу свяжемся с Вами.</h3>
                 <p>Назначьте время разговора с нами и мы поможем Вам выбрать вакансию и ответим на Ваши вопросы.</p>
-                <form onSubmit={handleSubmit} className="flex flex-wrap justify-center w-max items-center">
+                <form onSubmit={handleSubmit} className="flex flex-wrap justify-center w-full items-center">
                     <input 
                         className="input input-bordered" 
                         placeholder="Имя" 
