@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { News } from '@/lib/definitions';
+import Image from 'next/image';
 
 interface CardNewsProps {
   newsData: News[];
@@ -16,7 +17,8 @@ const CardNews: React.FC<CardNewsProps> = ({ newsData, count }) => {
               <div key={newsItem._id} className="w-full px-4 md:w-1/2 lg:w-1/3">
                 <div className="mx-auto mb-10 max-w-[370px]">
                   <div className="mb-8 overflow-hidden rounded">
-                    <img src={newsItem.image} alt="image" className="w-full" />
+                    <Image src={newsItem.image || "/default-image.png"} alt='default-image' width={400} height={400}/>
+                    {/* <img src={newsItem.image} alt="image" className="w-full" /> */}
                   </div>
                   <div>
                     <span className="bg-primary mb-5 inline-block rounded py-1 px-4 text-center text-xs font-semibold leading-loose text-white">
