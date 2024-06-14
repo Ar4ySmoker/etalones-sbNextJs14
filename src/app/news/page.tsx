@@ -10,9 +10,11 @@ import Title from '@/ui/Title/Title';
 import Useful from '@/ui/Useful/Useful';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { News } from "@/lib/definitions"
-import NewsPrimary from '@/ui/NewsPrimary/NewsPrimary';
+import CardNews from '@/ui/CardNews/CardNews';
+import Loading from '../Loading';
+
 
 
 const NewsPage = () => {
@@ -40,10 +42,14 @@ const NewsPage = () => {
                 <a className={`tab ${category === 'environment' ? 'tab-active' : ''}`} onClick={() => router.push('/news?category=environment')}>Охрана окружающей среды</a>
                 <a className={`tab ${category === 'business' ? 'tab-active' : ''}`} onClick={() => router.push('/news?category=business')}>Бизнес</a>
             </div>
-            <NewsPrimary />
+            <Suspense fallback={<Loading/>}>
+            <CardNews newsData={newsData} count={3}/>
+            </Suspense>
   <FormCallBack/>
   <Title text={'Подобные вакансии'}/>
+  <Suspense fallback={<Loading/>}>
   <Card count={3} vacancies={vacancies}/>
+  </Suspense>
   <Useful/>
   <FormSubscribe/>
   <Footer/>

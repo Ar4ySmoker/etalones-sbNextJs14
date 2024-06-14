@@ -10,12 +10,18 @@ const NewsPrimary = () => {
     <>
       <div className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto">
-          <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">From the blog</h1>
           <div className="mt-8 lg:-mx-6 lg:flex lg:items-center">
-
-            <div className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96">
-          <Image src={newsData[0].image || "/default-image.png"} alt='default-image' style={{objectFit: "contain"}} fill/>
-            </div>
+            <div className="relative w-full h-52 md:w-[400px] md:h-[430px] mx-auto">
+          <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white pb-5 z-10">Новости</h1>
+            <Image 
+      src={newsData[0].image || "/default-image.png"}
+      alt="default-image"
+      
+      width={400} // Ширина для крупных экранов
+      height={300} // Высота для крупных экранов
+      sizes="(max-width: 768px) 100vw, 50vw" // Размер для мобильных устройств и ноутбуков
+      // style={{ objectFit: "cover" }}
+    />            </div>
 
             {/* <img className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src={newsData[0].image} alt="" /> */}
             <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
