@@ -39,7 +39,7 @@ const Card: React.FC<CardProps> = ({ count, vacancies }) => {
                             <a href={vacancy.whatsapp} target='blank'><WhatsApp width={30} height={30} /></a>
                             <div className="self-end">
   <Link href={`/vacancy/${vacancy._id}`}>
-    <Button text={"Подробнее"} />
+    <Button text={"Подробнее"} className='btn-outline btn-error'/>
   </Link>
 </div>
                         </div>

@@ -33,9 +33,9 @@ const config = {
       },
     },
   },
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui'),require('tailwindcss-textshadow')],
   daisyui: {
-    themes: ['light', 'dark', 'cupcake'],
+    themes: ['light'],
   },
 };
 

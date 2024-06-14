@@ -15,7 +15,7 @@ import VacancyFresh from "../ui/VacancyFresh/VacancyFresh";
 export default function Home() {
 
   return (
-    <>
+    <div className="bg-base-200">
     <Navbar />
     <Hero />
     <FormCallBack/>
@@ -26,6 +26,6 @@ export default function Home() {
     <Managers/>
     <FormSubscribe/>
     <Footer/>
-    </>
+    </div>
   );
 }

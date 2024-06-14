@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Button from "../Buttons/Button";
+import Link from "next/link";
 
 export default function Useful() {
     return (
@@ -42,8 +44,10 @@ export default function Useful() {
                 </div>
                
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Ознакомится</button>
-                </div>
+                    <Link href="/userfull"> 
+<Button text={"Ознакомится"} className="btn-outline btn-warning"/>               
+                    </Link>
+ </div>
             </div>
 
         </div>

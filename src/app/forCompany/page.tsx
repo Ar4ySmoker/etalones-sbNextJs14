@@ -12,12 +12,12 @@ export default function Page() {
      <div className="hero  bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse">
   <div className="max-w-sm rounded-lg shadow-2xl overflow-hidden">
-            <Image src="/images/women-2.jpg" width={400} height={400} alt="" className="w-full h-full object-cover" />
+            <Image src="/images/hero/partnerHero.jpg" width={400} height={400} alt="" className="w-full h-full object-cover" />
         </div>
 
     <div>
-      <h1 className="text-5xl font-bold">Etalones S&B</h1>
-      <p className="py-6">Присоединяйтесь к нашей уникальной партнерской программе и откройте новые возможности для вашего бизнеса с Etalones S&B! Рекомендуйте наши качественные услуги и зарабатывайте вместе с нами.</p>
+      <h1 className="text-5xl font-bold">Профессиональный подбор кандидатов</h1>
+      <p className="py-6">Мы берем на себя все аспекты, связанные с подбором работников, и также эффективно и оперативно оформляем их легализацию для работы за рубежом.</p>
       <Button text={"Подать заявку на партнерство"} className="btn btn-outline btn-error"/>
     </div>
   </div>

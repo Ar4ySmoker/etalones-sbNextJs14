@@ -36,7 +36,7 @@ const VacanciesList: React.FC = () => {
                 <Card count={5} vacancies={vacancies} />
             </div>
             <Link href={'/vacancy'} className='mx-auto'>
-                <Button text={"Посмотреть все вакансии"} />
+                <Button text={"Посмотреть все вакансии"} className='btn-error btn-outline'/>
             </Link>
         </>
     );
