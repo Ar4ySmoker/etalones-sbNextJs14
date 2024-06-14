@@ -1,3 +1,4 @@
+'use client'
 import { redirect } from 'next/navigation';
 import vacancies from '@/lib/vacancy.json';
 import Breadcrumbs from '@/ui/Breadcrumbs/Breadcrumbs';
@@ -11,6 +12,9 @@ import Useful from '@/ui/Useful/Useful';
 import Managers from '@/ui/Managers/Managers';
 import Footer from '@/ui/Footer/Footer';
 import Navbar from '@/ui/Navbar/Navbar';
+import Card from '@/ui/Card/Card';
+import Title from '@/ui/Title/Title';
+import SameOneVacancy from '@/ui/SameOneVacancy/SameOneVacancy';
 
 
 
@@ -123,6 +127,9 @@ export default async function Page({ params }: PageProps) {
         </div>
       </div>
       <FormCallBack />
+      <Title text='Похожие вакансии'/>
+      <SameOneVacancy category={vacancy.category || ""} vacancies={vacancies} />
+      {/* <Card count={3} vacancies={vacancies}/> */}
       <Useful />
       <Managers />
       <Footer />

@@ -54,7 +54,7 @@ export default function FormCallBack() {
                 Имя: ${name}
                 Телефон: ${phone}
                 Время звонка: ${time}
-                Страница: ${currentPage} // включаем текущую страницу в сообщение
+                Страница: ${currentPage} 
             `;
             setIsLoading(true);
             await sendMessage(message);
@@ -107,7 +107,7 @@ export default function FormCallBack() {
                     </select>
                     {errors.time && <span className="text-red-500">{errors.time}</span>}
                     
-                    <Button text="Заказать звонок" isSubmit={true} />
+                    <Button text="Заказать звонок" isSubmit={true} className="btn-outline btn-error"/>
 
                 </form>
             </div>

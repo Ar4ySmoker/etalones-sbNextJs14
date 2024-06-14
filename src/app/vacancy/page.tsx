@@ -28,14 +28,12 @@ export default function VacancyPage() {
         <>
             <Navbar />
             <Title text={'Наши вакансии'} />
-            <div className="tabs justify-center flex flex-wrap mb-6 font-bold">
+            <div className="tabs justify-center flex flex-wrap mb-6 font-bold tabs-lifted">
                 <a className={`tab ${!category ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy')}>Все</a>
-                <a className={`tab ${category === 'internal' ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy?category=internal')}>Внутренняя отделка</a>
+                <a className={`tab ${category === 'internal' ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy?category=indor')}>Внутренняя отделка</a>
                 <a className={`tab ${category === 'outdoor' ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy?category=outdoor')}>Улица/Земляные работы</a>
                 <a className={`tab ${category === 'krovl' ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy?category=krovl')}>Кровля/Фасады</a>
                 <a className={`tab ${category === 'mehan' ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy?category=mehan')}>Сварщики/Механики</a>
-                <a className={`tab ${category === 'voditel' ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy?category=voditel')}>Водители</a>
-                <a className={`tab ${category === 'no-exp' ? 'tab-active' : ''}`} onClick={() => router.push('/vacancy?category=no-exp')}>Без опыта</a>
             </div>
             <Suspense fallback={<Loading/>}>
                 <Card count={vacancies.length} vacancies={vacancies} />

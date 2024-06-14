@@ -192,3 +192,25 @@ export interface News {
   minDescr?: string;
   source?: string;
 }
+
+ interface Article {
+  title: string;
+  a: string;
+  image: string;
+  content: string;
+}
+
+export interface Userfull {
+  _id: string;
+  source: string;
+  title: string;
+  h1: string;
+  h2: string;
+  h3: string;
+  category: string;
+  description: string;
+  content: {
+      article: Article[];
+  };
+  image: string;
+}

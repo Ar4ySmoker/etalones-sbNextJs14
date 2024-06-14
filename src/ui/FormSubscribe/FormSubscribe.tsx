@@ -98,7 +98,7 @@ export default function FormSubscribe() {
                         />
                         <p>Получай регулярные уведомления о актуальных новостях</p>
                     </div>
-                    <Button text="Подписаться" isSubmit />
+                    <Button text="Подписаться" isSubmit className="btn-outline btn-warning w-max  md:mx-0"/>
                 </form>
             </div>
         </div>

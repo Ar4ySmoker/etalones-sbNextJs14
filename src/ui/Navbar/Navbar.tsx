@@ -21,29 +21,24 @@ export default function Navbar() {
                             <details>
                                 <summary ><p className='text-xl w-max'>Вакансии</p></summary>
                                 <ul className="p-2 bg-gradient-red z-10">
-                                    <li ><Link href='/vacancy'><p className='text-xl w-max'>Смотреть все</p> </Link></li>
-                                    <li><Link href='/vacancy?category=internal'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
-                                    <li><Link href='/vacancy?category=outdoor'><p className='text-xl  w-max'>Работа на улице</p></Link></li>
-                                    <li><Link href='/vacancy?category=no-experience'><p className='text-xl  w-max'>Без опыта</p></Link></li>
+                                <li><Link href='/vacancy'><p className='text-xl w-max' >Смотреть все</p></Link></li>
+                                <li><Link href='/vacancy?category=indor' ><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
+                                <li><Link href='/vacancy?category=outdoor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
+                                <li><Link href='/vacancy?category=krovl'><p className='text-xl w-max'>Кровля/Фасады</p></Link></li>
+                                <li><Link href='/vacancy?category=no-experience'><p className='text-xl w-max'>Без опыта</p></Link></li>
                                 </ul>
                             </details>
                         </li>
                         <li className='text-xl'><Link href="/news"><p className='text-xl  w-max'>Новости</p></Link></li>
 
-                        <li>
-                            <details>
-                                <summary><p className='text-xl  w-max'>Полезное</p></summary>
-                                <ul className="p-2 bg-gradient-red z-10">
-                                <li><Link href="/forRecrut"><p className='text-xl  w-max'>Рекрутерам</p></Link></li>
-                                </ul>
-                            </details>
-                        </li>
+                        <li><Link href="/userfull"><p className='text-xl  w-max'>Полезное</p></Link></li>
+
                         <li>
                             <details>
                                 <summary><p className='text-xl  w-max'>Соискателям</p></summary>
                                 <ul className="p-2 bg-gradient-red z-10">
                                 <li><Link href="/forRecrut"><p className='text-xl  w-max'>Рекрутерам</p></Link></li>
-                                <li><Link href="/forRecrut"><p className='text-xl  w-max'>Рекрутерам</p></Link></li>
+                                <li><Link href="/forCompany"><p className='text-xl  w-max'>Партнёрам</p></Link></li>
                                 </ul>
                             </details>
                         </li>
@@ -59,29 +54,22 @@ export default function Navbar() {
                         <summary ><p className='text-xl w-max'>Вакансии</p></summary>
                         <ul className="p-2 bg-gradient-red z-10 w-max">
                                 <li><Link href='/vacancy'><p className='text-xl w-max'>Смотреть все</p></Link></li>
-                                <li><Link href='/vacancy?category=internal'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
+                                <li><Link href='/vacancy?category=indor'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
                                 <li><Link href='/vacancy?category=outdoor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
+                                <li><Link href='/vacancy?category=krovl'><p className='text-xl w-max'>Кровля/Фасады</p></Link></li>
                                 <li><Link href='/vacancy?category=no-experience'><p className='text-xl w-max'>Без опыта</p></Link></li>
                             </ul>
                         </details>
                     </li>
-                    <li>
-                        <details>
-                        <summary ><p className='text-xl w-max'>Полезное</p></summary>
-                            <ul className="p-2 bg-gradient-red z-10 w-max">
-                                <li><a><p className='text-xl w-max'>Документы</p></a></li>
-                                <li><a><p className='text-xl w-max'>Законодательство</p></a></li>
-                                <li><a><p className='text-xl w-max'>Быт</p></a></li>
-                            </ul>
-                        </details>
-                    </li>
+                    <li><Link href="/userfull"><p className='text-xl  w-max'>Полезное</p></Link></li>
                     <li className='text-xl'><Link href="/news">Новости</Link></li>
                     <li>
                         <details>
                         <summary ><p className='text-xl w-max'>Соискателям</p></summary>
                             <ul className="p-2 bg-gradient-red z-10">
-                                <li><a><p className='text-xl w-max'>Строительным фирмам</p></a></li>
                                 <li><Link href="/forRecrut"><p className='text-xl w-max'>Рекрутерам</p></Link></li>
+                                <li><Link href="/forCompany"><p className='text-xl  w-max'>Партнёрам</p></Link></li>
+
                             </ul>
                         </details>
                     </li>
@@ -92,9 +80,9 @@ export default function Navbar() {
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn m-1">Соц. Сети<Phone width={25} height={25}/></div>
                     <ul tabIndex={0} className="dropdown-content w-max menu p-2 shadow bg-gradient-red z-10 rounded-box">
-                        <li><a href="" className="transition-transform transform hover:scale-110"><Telegram width={50} height={50} /></a></li>
-                        <li><a href="" className="transition-transform transform hover:scale-110"><Viber width={50} height={50} /></a></li>
-                        <li><a href="" className="transition-transform transform hover:scale-110"><Instagram width={50} height={50} /></a></li>
+                        <li><a target='blank' href="https://t.me/VakansiiEtalones" className="transition-transform transform hover:scale-110"><Telegram width={50} height={50} /></a></li>
+                        <li><a target='blank' href="https://invite.viber.com/?g2=AQAyInf%2Fn7gYIVEHhdr0DRiL0gFv%2BFU7%2BDoKEQWPv1MfWACpSMOQb%2Fb3UcXL4ZYh" className="transition-transform transform hover:scale-110"><Viber width={50} height={50} /></a></li>
+                        <li><a target='blank' href="https://www.instagram.com/etalones_s_b/" className="transition-transform transform hover:scale-110"><Instagram width={50} height={50} /></a></li>
                     </ul>
                 </div>
             </div>
