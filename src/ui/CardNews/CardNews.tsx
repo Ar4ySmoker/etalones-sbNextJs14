@@ -12,7 +12,7 @@ const CardNews: React.FC<CardNewsProps> = ({ newsData, count }) => {
     <>
       <div className="pt-5 pb-10 lg:pt-[20px] lg:pb-20">
         <div className="container mx-auto">
-          <div className="-mx-4 flex flex-wrap">
+          <div className="mx-4 flex flex-wrap">
             {newsData.slice( 0, count).map(newsItem => (
               <div key={newsItem._id} className="w-full px-4 md:w-1/2 lg:w-1/3">
                 <div className="mx-auto mb-10 max-w-[370px]">
