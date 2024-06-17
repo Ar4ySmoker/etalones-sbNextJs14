@@ -1,11 +1,79 @@
+'use client'
 import Navbar from "@/ui/Navbar/Navbar";
 import Image from "next/image";
 import {Star} from '@/svg/star'
 import {Medal} from '@/svg/medal'
 import {Box} from '@/svg/box'
 import Button from "@/ui/Buttons/Button";
+import { sendMessage } from "@/api/telegram/telegram";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import FormCallBack from "@/ui/FormCallBack/FormCallBack";
 
 export default function Page() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+      name: '',
+      phone: '',
+      time: '',
+      currentPage: '', // добавляем поле для текущей страницы
+  });
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  useEffect(() => {
+      setFormData((prevData) => ({
+          ...prevData,
+          currentPage: window.location.href // получаем текущий URL при монтировании компонента
+      }));
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      setFormData({
+          ...formData,
+          [e.target.name]: e.target.value
+      });
+      setErrors({
+          ...errors,
+          [e.target.name]: ''
+      });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      const { name, phone, time, currentPage } = formData;
+
+      if (!name.trim()) {
+          setErrors({ ...errors, name: 'Введите имя' });
+          return;
+      }
+      if (!phone.trim()) {
+          setErrors({ ...errors, phone: 'Введите телефон' });
+          return;
+      }
+      if (!time.trim()) {
+          setErrors({ ...errors, time: 'Выберите время звонка' });
+          return;
+      }
+
+      try {
+          const message = `
+              Имя: ${name}
+              Телефон: ${phone}
+              Время звонка: ${time}
+              Страница: ${currentPage} 
+          `;
+          setIsLoading(true);
+          await sendMessage(message);
+          alert('Запрос на звонок отправлен!');
+          setFormData({ name: '', phone: '', time: '', currentPage: '' });
+      } catch (error) {
+          setErrors({ ...errors, name: 'Ошибка при отправке сообщения' });
+      } finally {
+          setIsLoading(false);
+      }
+  };
+
     return (
         <>
         <Navbar/>
@@ -18,7 +86,7 @@ export default function Page() {
     <div>
       <h1 className="text-5xl font-bold">Etalones S&B</h1>
       <p className="py-6">Присоединяйтесь к нашей уникальной партнерской программе и откройте новые возможности для вашего бизнеса с Etalones S&B! Рекомендуйте наши качественные услуги и зарабатывайте вместе с нами.</p>
-      <Button text={"Подать заявку на партнерство"} className="btn btn-outline btn-error"/>
+      <Link href="#form"><Button text={"Подать заявку на партнерство"} className="btn btn-outline btn-error"/> </Link>
     </div>
   </div>
 </div>
@@ -37,7 +105,9 @@ export default function Page() {
     <p className="font-bold text-[#A60000]">Бонусы от 200€ до 500€ уже с первого месяца работы</p>
   </div>
 </div>
-
+<div id="form">
+<FormCallBack />
+</div>
         </>
       
     );

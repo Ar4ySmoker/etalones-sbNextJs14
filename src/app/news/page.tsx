@@ -43,7 +43,7 @@ const NewsPage = () => {
                 <a className={`tab ${category === 'business' ? 'tab-active' : ''}`} onClick={() => router.push('/news?category=business')}>Бизнес</a>
             </div>
             <Suspense fallback={<Loading/>}>
-            <CardNews newsData={newsData} count={3}/>
+            <CardNews newsData={newsData} count={4}/>
             </Suspense>
   <FormCallBack/>
   <Title text={'Подобные вакансии'}/>

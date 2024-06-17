@@ -4,7 +4,7 @@ import Navbar from '@/ui/Navbar/Navbar';
 import Footer from '@/ui/Footer/Footer';
 import FormCallBack from '@/ui/FormCallBack/FormCallBack';
 import FormSubscribe from '@/ui/FormSubscribe/FormSubscribe';
-import userfull from '@/lib/userfull.json';
+import userfullData from '@/lib/userfull.json';
 import Card from '@/ui/Card/Card';
 import Title from '@/ui/Title/Title';
 import Useful from '@/ui/Useful/Useful';
@@ -13,11 +13,13 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect, Suspense } from 'react';
 import { News } from "@/lib/definitions"
 import Loading from '../Loading';
+import CardUserfull from '@/ui/CardUserfull/CardUserfull';
+import { count } from 'console';
 
 
 
 const UserfullPage = () => {
-  const [userfull, setUserful] = useState<News[]>([]);
+  const [userfull, setUserfull] = useState<News[]>([]);
   const router = useRouter();
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
@@ -25,21 +27,17 @@ const UserfullPage = () => {
   useEffect(() => {
       if (category) {
           const filteredNews = userfull.filter(news => news.category === category);
-          setUserful(filteredNews);
+          setUserfull(filteredNews);
       } else {
-          setUserful(userfull);
+          setUserfull(userfull);
       }
   }, [category]);
   return (
       <>
   <Navbar/>
-  <Title text='Полезно знать'/>
-  <div className="tabs justify-center flex flex-wrap mb-6 font-bold">
-                <a className={`tab ${category === 'travel' ? 'tab-active' : ''}`} onClick={() => router.push('/userfull?category=travel')}>Как купить билет</a>
-                <a className={`tab ${category === 'environment' ? 'tab-active' : ''}`} onClick={() => router.push('/news?category=environment')}>Охрана окружающей среды</a>
-                <a className={`tab ${category === 'business' ? 'tab-active' : ''}`} onClick={() => router.push('/news?category=business')}>Бизнес</a>
-            </div>
+  <Title text='Полезно знать'/>            
             <Suspense fallback={<Loading/>}>
+            <CardUserfull userfullData={userfullData} count={8}/>
             </Suspense>
   <FormCallBack/>
   <Title text={'Подобные вакансии'}/>

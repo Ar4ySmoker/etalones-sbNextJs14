@@ -11,6 +11,7 @@ import Navbar from '@/ui/Navbar/Navbar';
 import CardNews from '@/ui/CardNews/CardNews';
 import Title from '@/ui/Title/Title';
 import Link from 'next/link'; // Импортируем компонент Link для навигации
+import CardUserfull from '@/ui/CardUserfull/CardUserfull';
 
 // Функция для загрузки конкретной новости по идентификатору
 async function fetchNews(id: string): Promise<Userfull | null> {
@@ -59,9 +60,6 @@ export default async function Page({ params }: PageProps) {
           <p className='tab'>Как податься на карту Побыта</p>
         </Link>
         <Link href="/userfull/5">
-          <p className='tab'>Как просмотреть на карте в каких городах есть вакансии</p>
-        </Link>
-        <Link href="/userfull/6">
           <p className='tab'>Как открыть и продлить визу</p>
         </Link>
       </div>
@@ -79,6 +77,7 @@ export default async function Page({ params }: PageProps) {
 
             <h2 className="text-2xl font-bold text-gray-900 tracking-tight">{selectedNews.h2}</h2>
             <div className="mt-5 text-base  text-center">
+            <p>{selectedNews.description}</p>
               {selectedNews.content?.article?.map((article, index) => (
                 <div key={index}>
                   <h3 className='font-bold mb-5'>{article.title}</h3>
@@ -92,10 +91,11 @@ export default async function Page({ params }: PageProps) {
           </div>
         </div>
         <div className='flex justify-between'>
-          <div>Источник: <a href={selectedNews.source} target='blank'>{selectedNews.source}</a></div>
+        <div>Источник: <a href={selectedNews.source || 'https://www.etalones.com'} target='_blank'>{selectedNews.source || 'Etalones S&B'}</a></div>
         </div>
       </div>
-      <Title text='Другие новости' />
+      <Title text='Другое полезное' />
+      <CardUserfull userfullData={userfull} count={-1}/>
       <FormCallBack />
       <Useful />
       <Managers />
