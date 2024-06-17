@@ -4,6 +4,8 @@ import {Star} from '@/svg/star'
 import {Medal} from '@/svg/medal'
 import {Box} from '@/svg/box'
 import Button from "@/ui/Buttons/Button";
+import FormCallBack from "@/ui/FormCallBack/FormCallBack";
+import Link from "next/link";
 
 export default function Page() {
     return (
@@ -18,7 +20,7 @@ export default function Page() {
     <div>
       <h1 className="text-5xl font-bold">Профессиональный подбор кандидатов</h1>
       <p className="py-6">Мы берем на себя все аспекты, связанные с подбором работников, и также эффективно и оперативно оформляем их легализацию для работы за рубежом.</p>
-      <Button text={"Подать заявку на партнерство"} className="btn btn-outline btn-error"/>
+      <Link href="#form"><Button text={"Подать заявку на партнерство"} className="btn btn-outline btn-error"/> </Link>
     </div>
   </div>
 </div>
@@ -37,7 +39,9 @@ export default function Page() {
     <p className="font-bold text-[#A60000]">Бонусы от 200€ до 500€ уже с первого месяца работы</p>
   </div>
 </div>
-
+<div id="form">
+<FormCallBack />
+</div>
         </>
       
     );

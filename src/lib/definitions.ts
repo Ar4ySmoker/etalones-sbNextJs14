@@ -209,8 +209,12 @@ export interface Userfull {
   h3: string;
   category: string;
   description: string;
-  content: {
-      article: Article[];
+  content?: {
+    article?: {
+      title?: string;
+      image?: string;
+      content?: string;
+    }[];
   };
   image: string;
 }

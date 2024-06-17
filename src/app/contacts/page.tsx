@@ -1,4 +1,4 @@
-'use client'; // Добавляем директиву 'use client' перед компонентом
+'use client';
 
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from 'next/navigation';
