@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from "react";
 import Button from "../Buttons/Button";
-import { sendMessage } from "@/api/telegram/telegram";
+import { sendMessage } from "@/app/api/telegram/telegram";
+import { useRouter } from "next/navigation";
 
 export default function FormCallBack() {
     const [isLoading, setIsLoading] = useState(false);
@@ -12,6 +13,8 @@ export default function FormCallBack() {
         currentPage: '', // добавляем поле для текущей страницы
     });
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+    const router = useRouter();
 
     useEffect(() => {
         setFormData((prevData) => ({
@@ -31,42 +34,128 @@ export default function FormCallBack() {
         });
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
 
-        const { name, phone, time, currentPage } = formData;
+    //     const { name, phone, time, currentPage } = formData;
 
-        if (!name.trim()) {
-            setErrors({ ...errors, name: 'Введите имя' });
-            return;
-        }
-        if (!phone.trim()) {
-            setErrors({ ...errors, phone: 'Введите телефон' });
-            return;
-        }
-        if (!time.trim()) {
-            setErrors({ ...errors, time: 'Выберите время звонка' });
-            return;
-        }
+    //     if (!name.trim()) {
+    //         setErrors({ ...errors, name: 'Введите имя' });
+    //         return;
+    //     }
+    //     if (!phone.trim()) {
+    //         setErrors({ ...errors, phone: 'Введите телефон' });
+    //         return;
+    //     }
+    //     if (!time.trim()) {
+    //         setErrors({ ...errors, time: 'Выберите время звонка' });
+    //         return;
+    //     }
 
-        try {
-            const message = `
-                Имя: ${name}
-                Телефон: ${phone}
-                Время звонка: ${time}
-                Страница: ${currentPage} 
-            `;
-            setIsLoading(true);
-            await sendMessage(message);
-            alert('Запрос на звонок отправлен!');
-            setFormData({ name: '', phone: '', time: '', currentPage: '' });
-        } catch (error) {
-            setErrors({ ...errors, name: 'Ошибка при отправке сообщения' });
-        } finally {
-            setIsLoading(false);
-        }
-    };
+    //     try {
+    //         // Формируем сообщение для Telegram
+    //         const message = `
+    //             Имя: ${name}
+    //             Телефон: ${phone}
+    //             Время звонка: ${time}
+    //             Страница: ${currentPage} 
+    //         `;
+    //         setIsLoading(true);
+    //         await sendMessage(message);
 
+    //         // Формируем данные для сохранения в базу данных
+    //         const body = {
+    //             name,
+    //             phone,
+    //             time,
+    //             source: 'сайт'
+    //         };
+
+    //         const response = await fetch('/api/candidates', { 
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify(body)
+    //         });
+
+    //         const result = await response.json();
+    //         if (response.ok) {
+    //             console.log('Candidate created:', result);
+    //             alert('Запрос на звонок отправлен и сохранен в базу данных!');
+    //             router.refresh();
+    //             router.push("/dashboard/candidates");
+    //             setFormData({ name: '', phone: '', time: '', currentPage: '' });
+    //         } else {
+    //             setErrors({ ...errors, name: result.message || 'Ошибка при сохранении в базу данных' });
+    //         }
+    //     } catch (error) {
+    //         setErrors({ ...errors, name: 'Ошибка при отправке сообщения или сохранении в базу данных' });
+    //         console.error('Error:', error);
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
+// Обработчик формы
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  
+    const { name, phone, time, currentPage } = formData;
+  
+    if (!name.trim()) {
+      setErrors({ ...errors, name: 'Введите имя' });
+      return;
+    }
+    if (!phone.trim()) {
+      setErrors({ ...errors, phone: 'Введите телефон' });
+      return;
+    }
+    if (!time.trim()) {
+      setErrors({ ...errors, time: 'Выберите время звонка' });
+      return;
+    }
+  
+    try {
+      // Формируем сообщение для Telegram
+      const message = `
+        Имя: ${name}
+        Телефон: ${phone}
+        Время звонка: ${time}
+        Страница: ${currentPage} 
+      `;
+      setIsLoading(true);
+      await sendMessage(message);
+  
+      // Формируем данные для сохранения в базу данных
+      const body = {
+        name,
+        phone,
+        time,
+        source: 'сайт'
+      };
+  
+      const response = await fetch('/api/candidates', { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+  
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Candidate created:', result);
+        alert('Запрос на звонок отправлен и сохранен в базу данных!');
+        router.refresh();
+        router.push("/");
+        setFormData({ name: '', phone: '', time: '', currentPage: '' });
+      } else {
+        setErrors({ ...errors, name: result.message || 'Ошибка при сохранении в базу данных' });
+      }
+    } catch (error) {
+      setErrors({ ...errors, name: 'Ошибка при отправке сообщения или сохранении в базу данных' });
+      console.error('Error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
     return (
         <div className="container mx-auto px-4">
             <div className="w-full">
@@ -108,7 +197,6 @@ export default function FormCallBack() {
                     {errors.time && <span className="text-red-500">{errors.time}</span>}
                     
                     <Button text="Заказать звонок" isSubmit={true} className="btn-outline btn-error"/>
-
                 </form>
             </div>
         </div>
