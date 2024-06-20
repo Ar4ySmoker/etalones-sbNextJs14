@@ -34,5 +34,26 @@ const vacancyShema = new mongoose.Schema({
   }
 })
 
+const candidateSchema = new mongoose.Schema({
+  source:{
+type: String
+  },
+  name: {
+type: String,
+  },
+  phone:{
+    type: String,
+  },
+  time:{
+  type: String,  
+  },
+  currentPage:{
+type: String,
+  }
+},
+{ timestamps: true }
+)
+
 export const Vacancy = mongoose.models.Vacancy || mongoose.model("Vacancy", vacancyShema)
 export const Manager = mongoose.models.Manager || mongoose.model("Manager", managerShema)
+export const Candidate = mongoose.models.Candidate || mongoose.model("Candidate", candidateSchema);
