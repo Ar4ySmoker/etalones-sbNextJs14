@@ -14,7 +14,6 @@ import { useState, useEffect, Suspense } from 'react';
 import { News } from "@/lib/definitions"
 import Loading from '../Loading';
 import CardUserfull from '@/ui/CardUserfull/CardUserfull';
-import { count } from 'console';
 
 
 
