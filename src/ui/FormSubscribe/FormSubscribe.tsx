@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../Buttons/Button";
-import { sendMessage } from "@/api/telegram/telegram";
+import { sendMessage } from "@/app/api/telegram/telegram";
 
 export default function FormSubscribe() {
     const [formData, setFormData] = useState({

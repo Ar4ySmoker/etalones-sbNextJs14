@@ -5,7 +5,7 @@ import {Star} from '@/svg/star'
 import {Medal} from '@/svg/medal'
 import {Box} from '@/svg/box'
 import Button from "@/ui/Buttons/Button";
-import { sendMessage } from "@/api/telegram/telegram";
+import { sendMessage } from "@/app/api/telegram/telegram";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import FormCallBack from "@/ui/FormCallBack/FormCallBack";
