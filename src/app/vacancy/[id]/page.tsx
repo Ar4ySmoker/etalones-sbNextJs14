@@ -12,7 +12,6 @@ import Useful from '@/ui/Useful/Useful';
 import Managers from '@/ui/Managers/Managers';
 import Footer from '@/ui/Footer/Footer';
 import Navbar from '@/ui/Navbar/Navbar';
-import Card from '@/ui/Card/Card';
 import Title from '@/ui/Title/Title';
 import SameOneVacancy from '@/ui/SameOneVacancy/SameOneVacancy';
 
