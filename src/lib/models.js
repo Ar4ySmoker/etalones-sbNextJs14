@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { type } from "os";
+import { title } from "process";
 
 const managerShema = new mongoose.Schema({
   name:{
@@ -33,7 +34,53 @@ const vacancyShema = new mongoose.Schema({
     type: String
   }
 })
+const vacancyOnServerShema = new mongoose.Schema({
+  image: {
+    name: String,
+    data: Buffer,
+    contentType: String
+},
+  title:{
+  type: String
+},
+  roof_type:{
+  type: String
+},
+  location:{
+  type:String
+},
+  auto:{
+type: String
+},
+  positions_available:{
+  type:String
+},
+  salary:{
+  type:String
+},
+  homePrice:{
+  type:String
+},
+  home_descr:{
+  type:String
+},
+  work_descr:{
+  type:String
+},
+  grafik:{
+  type:String
+},
+  documents:{
+  type:String
+},
+  manager:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Manager'},
+category:{
+type: String
+}
 
+})
 const candidateSchema = new mongoose.Schema({
   source:{
 type: String
@@ -53,7 +100,7 @@ type: String,
 },
 { timestamps: true }
 )
-
+export const VacancyOnServer = mongoose.models.VacancyOnServer || mongoose.model("VacancyOnServer", vacancyOnServerShema)
 export const Vacancy = mongoose.models.Vacancy || mongoose.model("Vacancy", vacancyShema)
 export const Manager = mongoose.models.Manager || mongoose.model("Manager", managerShema)
 export const Candidate = mongoose.models.Candidate || mongoose.model("Candidate", candidateSchema);
