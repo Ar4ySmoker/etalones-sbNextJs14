@@ -26,14 +26,16 @@ interface Vacancy {
 }
 
 const Card: React.FC = () => {
-    const [vacancies, setVacancies] = useState<Vacancy[]>([]);
+    const [vacancy, setVacancy] = useState<Vacancy[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const fetchVacancies = async () => {
         try {
-            const response = await fetch('https://www.candidat.store/api/vacancy');
+            // const response = await fetch('https://www.candidat.store/api/vacancy');
+            const response = await fetch('/api/vacancy');
+
             const data = await response.json();
-            setVacancies(data);
+            setVacancy(data);
             setIsLoading(false);
         } catch (error) {
             console.error("Error fetching vacancies:", error);
@@ -50,7 +52,7 @@ const Card: React.FC = () => {
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
-                vacancies.map((vacancy) => (
+                vacancy.map((vacancy) => (
                     <div key={vacancy._id} className="card w-96 glass m-4">
                         <figure>
                             {vacancy.image ? (
