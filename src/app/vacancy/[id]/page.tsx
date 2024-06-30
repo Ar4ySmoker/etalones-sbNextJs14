@@ -1,6 +1,6 @@
 'use client'
 import { redirect } from 'next/navigation';
-import vacancies from '@/lib/vacancy.json';
+// import vacancies from '@/lib/vacancy.json';
 import Breadcrumbs from '@/ui/Breadcrumbs/Breadcrumbs';
 import Image from 'next/image';
 import { Vacancy } from '@/lib/definitions';
