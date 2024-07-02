@@ -10,7 +10,8 @@ import Managers from '@/ui/Managers/Managers';
 import Footer from '@/ui/Footer/Footer';
 import Navbar from '@/ui/Navbar/Navbar';
 import Title from '@/ui/Title/Title';
-import Card from '../Card/Card';
+import SameOneVacancy from '@/ui/SameOneVacancy/SameOneVacancy'
+
 export default function VacTdet({ vacancy }){
     const {
         home_descr,
@@ -116,8 +117,8 @@ export default function VacTdet({ vacancy }){
         </div>
         <FormCallBack />
         <Title text='Похожие вакансии'/>
-        {/* <SameOneVacancy category={vacancy.category || ""} vacancies={vacancy} /> */}
-        <Card count={3} />
+        <SameOneVacancy category={vacancy.category || ""} currentVacancyId={vacancy._id} count={3} />
+        {/* <Card count={3} /> */}
         <Useful />
         <Managers />
         <Footer />
