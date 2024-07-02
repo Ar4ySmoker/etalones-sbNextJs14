@@ -11,8 +11,7 @@ import Footer from '@/ui/Footer/Footer';
 import Navbar from '@/ui/Navbar/Navbar';
 import Title from '@/ui/Title/Title';
 import Card from '../Card/Card';
-import SameOneVacancy from '@/ui/SameOneVacancy/SameOneVacancy';
-export default function VacTdet({ vacancy, allVacancy }){
+export default function VacTdet({ vacancy }){
     const {
         home_descr,
         work_descr,
@@ -25,6 +24,10 @@ export default function VacTdet({ vacancy, allVacancy }){
       const workDet = work_descr ? work_descr.split(';') : [];
       const workGrafic = grafik ? grafik.split(';') : [];
 
+
+      const managerName = vacancy.manager.name.toLowerCase().replace(/\s/g, '');
+      const managerImage = `/images/managers/${managerName}.jpg`;
+      const managerPhone = `+${vacancy.manager.phone}`
     return(
         <>
         <Navbar />
@@ -100,10 +103,10 @@ export default function VacTdet({ vacancy, allVacancy }){
             <p>Контакт менеджера:</p>
             <div className="avatar flex flex-col items-center">
               <div className="rounded-full">
-                <Image src={vacancy.manager || "/default-image.png"} width={200} height={200} alt='manager' />
-              </div>
+              <Image src={managerImage} width={200} height={200} alt='manager' />              </div>
             </div>
-            <p>{vacancy.contact}</p>
+            <p>{vacancy.manager.name}</p>
+            <p>{managerPhone}</p>
             <div className="flex gap-2 w-max justify-between mt-4">
               <a href={vacancy.manager.viber} target='blank' className="transition-transform transform hover:scale-110 "><Viber width={30} height={30} /></a>
               <a href={vacancy.manager.telegram} target='blank' className="transition-transform transform hover:scale-110 "><Telegram width={30} height={30} /></a>
