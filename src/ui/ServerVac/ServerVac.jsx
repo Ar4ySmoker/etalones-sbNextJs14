@@ -33,7 +33,7 @@ export default function ServerVac(){
     }, []);
     return(
         <>
-        <div>вакансии</div>
+        <div>Вакансии</div>
         {isLoading ? (
                 <p><span className="loading loading-spinner loading-md"></span> Загрузка...</p>
             ) : (

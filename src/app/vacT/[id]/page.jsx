@@ -30,7 +30,7 @@ export default async function Page({ params }) {
   return (
 <>
 
-<VacTdet vacancy={vacancy} id={id}/>
+<VacTdet vacancy={vacancy} />
 </>
    
 
