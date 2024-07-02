@@ -23,7 +23,7 @@ export default function Navbar() {
                                 <ul className="p-2 bg-gradient-red z-10">
                                 <li><Link href='/vacancy'><p className='text-xl w-max' >Смотреть все</p></Link></li>
                                 <li><Link href='/vacancy?category=indor' ><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
-                                <li><Link href='/vacancy?category=outdoor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
+                                <li><Link href='/vacancy?category=outdor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
                                 <li><Link href='/vacancy?category=krovl'><p className='text-xl w-max'>Кровля/Фасады</p></Link></li>
                                 <li><Link href='/vacancy?category=no-experience'><p className='text-xl w-max'>Без опыта</p></Link></li>
                                 </ul>
@@ -55,7 +55,7 @@ export default function Navbar() {
                         <ul className="p-2 bg-gradient-red z-10 w-max">
                                 <li><Link href='/vacancy'><p className='text-xl w-max'>Смотреть все</p></Link></li>
                                 <li><Link href='/vacancy?category=indor'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
-                                <li><Link href='/vacancy?category=outdoor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
+                                <li><Link href='/vacancy?category=outdor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
                                 <li><Link href='/vacancy?category=krovl'><p className='text-xl w-max'>Кровля/Фасады</p></Link></li>
                                 <li><Link href='/vacancy?category=no-experience'><p className='text-xl w-max'>Без опыта</p></Link></li>
                             </ul>

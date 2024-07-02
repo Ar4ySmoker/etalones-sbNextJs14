@@ -13,6 +13,7 @@ import VacancyFresh from "../ui/VacancyFresh/VacancyFresh";
 
 
 export default function Home() {
+  const categories = ['indor', 'outdoor', 'krovl', 'no-experience', 'santehnic', 'derevo', 'zavod', 'tehnic', 'kamen', 'beton', 'electric', 'metal', 'outdor', 'noexp'];
 
   return (
     <div className="bg-base-200">

@@ -5,7 +5,7 @@ export default function Page(){
     return(
 
         <>
-        <ServerVac/>
+        <ServerVac vacanciesCount={50} enableCategorySwitcher={true}/>
         </>
     )
 }
