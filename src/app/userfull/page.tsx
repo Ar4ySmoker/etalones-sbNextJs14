@@ -15,6 +15,7 @@ import { News } from "@/lib/definitions"
 import Loading from '../Loading';
 import CardUserfull from '@/ui/CardUserfull/CardUserfull';
 import { count } from 'console';
+import ServerVac from '@/ui/ServerVac/ServerVac';
 
 
 
@@ -40,9 +41,9 @@ const UserfullPage = () => {
             <CardUserfull userfullData={userfullData} count={8}/>
             </Suspense>
   <FormCallBack/>
-  <Title text={'Подобные вакансии'}/>
+  <Title text={'Актуальные вакансии'}/>
   <Suspense fallback={<Loading/>}>
-  <Card count={3} vacancies={vacancies}/>
+  <ServerVac vacanciesCount={3}/>
   </Suspense>
   <Useful/>
   <FormSubscribe/>

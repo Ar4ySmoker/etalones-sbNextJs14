@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function CategorySwitcher({ categories, selectedCategory, setSelectedCategory }) {
     return (
-        <div className="mb-4 flex justify-center">
+        <div className="mb-4 flex justify-center flex-wrap">
             {categories.map((category) => (
                 <button 
                     key={category} 

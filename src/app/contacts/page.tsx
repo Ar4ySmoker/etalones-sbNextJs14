@@ -2,7 +2,6 @@
 
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from 'next/navigation';
-import Card from "@/ui/Card/Card";
 import Footer from "@/ui/Footer/Footer";
 import FormCallBack from "@/ui/FormCallBack/FormCallBack";
 import Managers from "@/ui/Managers/Managers";
@@ -11,6 +10,7 @@ import Useful from "@/ui/Useful/Useful";
 import { Vacancy } from "@/lib/definitions";
 import vacanciesData from "@/lib/vacancy.json"; // Import vacanciesData here
 import Title from "@/ui/Title/Title";
+import ServerVac from "@/ui/ServerVac/ServerVac";
 
 function VacanciesComponent() {
   const [vacancies, setVacancies] = useState<Vacancy[]>([]);
@@ -30,8 +30,8 @@ function VacanciesComponent() {
   return (
     <>
       <Title text={"Похожие объявления"} />
-      <Card count={3} vacancies={vacancies} />
-    </>
+      <ServerVac vacanciesCount={3}/>
+      </>
   );
 }
 
