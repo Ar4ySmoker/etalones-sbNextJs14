@@ -1,3 +1,6 @@
+// src/components/ManagerCard.tsx
+'use client';
+import React from 'react';
 import Image from 'next/image';
 import { Viber } from '@/svg/viber';
 import { Telegram } from '@/svg/telegram';
@@ -17,7 +20,6 @@ const ManagerCard: React.FC<Props> = ({ managers }) => {
                     <div key={manager._id} className="flex flex-col items-center my-5">
                         <div className="avatar flex flex-col items-center">
                             <div className="rounded-full">
-                                {/* Используем имя менеджера для формирования пути к изображению */}
                                 <Image
                                     src={`/images/managers/${manager.name.toLowerCase().replace(/\s/g, '')}.jpg`}
                                     alt={manager.name}
@@ -44,6 +46,6 @@ const ManagerCard: React.FC<Props> = ({ managers }) => {
             </div>
         </div>
     );
-}
+};
 
 export default ManagerCard;
