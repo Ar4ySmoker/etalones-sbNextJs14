@@ -89,6 +89,7 @@ export default function Page() {
       <Link href="#form"><Button text={"Подать заявку на партнерство"} className="btn btn-outline btn-error"/> </Link>
     </div>
   </div>
+  
 </div>
 
 <div className="flex flex-wrap gap-3 justify-center p-3  md:flex-nowrap">
