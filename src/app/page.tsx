@@ -1,6 +1,5 @@
 'use client'
 
-import Managers from "@/ui/Managers/Managers";
 import Footer from "../ui/Footer/Footer";
 import FormCallBack from "../ui/FormCallBack/FormCallBack";
 import FormSubscribe from "../ui/FormSubscribe/FormSubscribe";
@@ -12,6 +11,7 @@ import ServerVac from "@/ui/ServerVac/ServerVac";
 import Title from "@/ui/Title/Title";
 import Button from "@/ui/Buttons/Button";
 import Link from "next/link";
+// import ManagerCard from "@/ui/ManagerCard/ManagerCard";
 
 
 
@@ -34,7 +34,7 @@ export default function Home() {
     <Useful/>
     <News/>
     {/* <CarouselManager/> */}
-    <Managers/>
+    {/* <ManagerCard managers={managers} /> */}
     <FormSubscribe/>
     <Footer/>
     </div>
