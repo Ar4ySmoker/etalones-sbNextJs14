@@ -9,6 +9,8 @@ import Navbar from "../ui/Navbar/Navbar";
 import News from "../ui/News/News";
 import Useful from "../ui/Useful/Useful";
 import VacancyFresh from "../ui/VacancyFresh/VacancyFresh";
+import ServerVac from "@/ui/ServerVac/ServerVac";
+import Title from "@/ui/Title/Title";
 
 
 
@@ -20,7 +22,8 @@ export default function Home() {
     <Navbar />
     <Hero />
     <FormCallBack/>
-    <VacancyFresh/>
+    <Title text="Наши вакансии"/>
+    <ServerVac vacanciesCount={3}/>
     <Useful/>
     <News/>
     {/* <CarouselManager/> */}
