@@ -1,11 +1,9 @@
 'use client'
-import vacancies from '@/lib/vacancy.json';
 import Navbar from '@/ui/Navbar/Navbar';
 import Footer from '@/ui/Footer/Footer';
 import FormCallBack from '@/ui/FormCallBack/FormCallBack';
 import FormSubscribe from '@/ui/FormSubscribe/FormSubscribe';
 import userfullData from '@/lib/userfull.json';
-import Card from '@/ui/Card/Card';
 import Title from '@/ui/Title/Title';
 import Useful from '@/ui/Useful/Useful';
 import { useSearchParams } from 'next/navigation';
@@ -14,6 +12,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { News } from "@/lib/definitions"
 import Loading from '../Loading';
 import CardUserfull from '@/ui/CardUserfull/CardUserfull';
+import ServerVac from '@/ui/ServerVac/ServerVac';
 
 
 
@@ -39,9 +38,9 @@ const UserfullPage = () => {
             <CardUserfull userfullData={userfullData} count={8}/>
             </Suspense>
   <FormCallBack/>
-  <Title text={'Подобные вакансии'}/>
+  <Title text={'Актуальные вакансии'}/>
   <Suspense fallback={<Loading/>}>
-  <Card count={3} vacancies={vacancies}/>
+  <ServerVac vacanciesCount={3}/>
   </Suspense>
   <Useful/>
   <FormSubscribe/>

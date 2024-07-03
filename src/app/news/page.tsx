@@ -14,6 +14,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { News } from "@/lib/definitions"
 import CardNews from '@/ui/CardNews/CardNews';
 import Loading from '../Loading';
+import ServerVac from '@/ui/ServerVac/ServerVac';
 
 
 
@@ -48,7 +49,7 @@ const NewsPage = () => {
   <FormCallBack/>
   <Title text={'Подобные вакансии'}/>
   <Suspense fallback={<Loading/>}>
-  <Card count={3} vacancies={vacancies}/>
+  <ServerVac vacanciesCount={3}/>
   </Suspense>
   <Useful/>
   <FormSubscribe/>
