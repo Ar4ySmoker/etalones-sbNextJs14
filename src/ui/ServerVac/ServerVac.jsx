@@ -94,7 +94,7 @@ export default function ServerVac({ vacanciesCount, enableCategorySwitcher = fal
                                         <a href={vacancy.manager.telegram} target='blank'><Telegram width={30} height={30} /></a>
                                         <a href={vacancy.manager.whatsapp} target='blank'><WhatsApp width={30} height={30} /></a>
                                         <div className="self-end">
-                                            <Link href={`/vacT/${vacancy._id}`}>
+                                            <Link href={`/vacancy/${vacancy._id}`}>
                                                 <Button text={"Подробнее"} className='btn-outline btn-error' />
                                             </Link>
                                         </div>
