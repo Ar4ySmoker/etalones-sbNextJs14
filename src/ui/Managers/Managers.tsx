@@ -1,3 +1,4 @@
+'use client'
 // src/pages/managers.tsx
 import React, { useEffect, useState } from 'react';
 import ManagerCard from '@/ui/ManagerCard/ManagerCard';
