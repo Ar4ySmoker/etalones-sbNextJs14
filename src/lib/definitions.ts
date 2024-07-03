@@ -134,6 +134,14 @@ export type ManagerField = {
   _id: string;
   name: string;
   phone: string;
+  viber: string;
+  whatsapp: string;
+  telegram: string;
+  image: {
+    name: string;
+    data: Buffer; // или другой тип, представляющий бинарные данные
+    contentType: string;
+};
 }
 export type CandidateForm = {
   _id: string;

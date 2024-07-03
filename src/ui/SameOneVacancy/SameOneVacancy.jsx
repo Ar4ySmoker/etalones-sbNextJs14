@@ -42,6 +42,8 @@ export default function SameOneVacancy({ category, currentVacancyId, count = 3 }
         <>
             {isLoading ? (
                 <p><span className="loading loading-spinner loading-md"></span> Загрузка...</p>
+            ) : relatedVacancies.length === 0 ? (
+                <p className='flex justify-center font-bold'>Эта вакансия уникальна в своей категории</p>
             ) : (
                 <div className="flex flex-wrap justify-center w-full">
                     <Card vacancies={relatedVacancies} />

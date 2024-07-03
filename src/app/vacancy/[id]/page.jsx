@@ -1,40 +1,46 @@
+import { fetchManager } from '@/lib/myData';
+import VacTdet from '@/ui/ServerVac/VacTdet';
 
+const getVacancyById = async (id) => {
+    try {
+        const res = await fetch(`https://www.etalones.com/api/vacancy/${id}`, {
+            cache: "no-store",
+        });
 
-import VacTdet from '@/ui/ServerVac/VacTdet'
+        if (!res.ok) {
+            throw new Error("Failed to fetch vacancy");
+        }
 
-const getVacancyById = async ( id ) => {
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const getAllManagers = async () => {
   try {
-      // const res = await fetch(`http://localhost:3000/api/vacancy/${id}`, {
-      //     cache: "no-store",
-      // });
-      const res = await fetch(`https://www.etalones.com/api/vacancy/${id}`, {
-          cache: "no-store",
-      });
+      const managers = await fetchManager(); // Ожидаем массив объектов ManagerField[]
 
-      if (!res.ok) {
-          throw new Error("Failed to fetch vacancy");
-      }
-
-      return res.json();
+      return managers; // Возвращаем массив менеджеров напрямую
   } catch (error) {
       console.log(error);
+      throw new Error("Failed to fetch managers");
   }
 };
 
 
-
 export default async function Page({ params }) {
-  const { id } = params;
-  const { vacancy } = await getVacancyById( id );
+    const { id } = params;
 
-  return (
-<>
+    // Запрос вакансии
+    const { vacancy } = await getVacancyById(id);
 
-<VacTdet vacancy={vacancy} />
-</>
-   
+    // Запрос всех менеджеров
+    const managers = await getAllManagers();
 
-
-
-  );
+    return (
+        <>
+            <VacTdet vacancy={vacancy} managers={managers} />
+        </>
+    );
 }
