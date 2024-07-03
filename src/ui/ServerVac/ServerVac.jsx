@@ -16,8 +16,8 @@ export default function ServerVac({ vacanciesCount, enableCategorySwitcher = fal
 
     const fetchVacany = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/vacancy');
-            // const response = await fetch('https://www.candidat.store/api/vacancy');
+            // const response = await fetch('http://localhost:3000/api/vacancy');
+            const response = await fetch('https://www.candidat.store/api/vacancy');
             const data = await response.json();
             console.log('VACANCY', data);
 
