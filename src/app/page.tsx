@@ -11,10 +11,17 @@ import Useful from "../ui/Useful/Useful";
 import VacancyFresh from "../ui/VacancyFresh/VacancyFresh";
 import ServerVac from "@/ui/ServerVac/ServerVac";
 import Title from "@/ui/Title/Title";
+import Button from "@/ui/Buttons/Button";
+import Link from "next/link";
 
 
 
 export default function Home() {
+  function getCurrentDate() {
+    const date = new Date();
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('ru-RU', options);
+}
   const categories = ['indor', 'outdoor', 'krovl', 'no-experience', 'santehnic', 'derevo', 'zavod', 'tehnic', 'kamen', 'beton', 'electric', 'metal', 'outdor', 'noexp'];
 
   return (
@@ -22,8 +29,9 @@ export default function Home() {
     <Navbar />
     <Hero />
     <FormCallBack/>
-    <Title text="Наши вакансии"/>
+    <Title text={`Актуальные вакансии на ${getCurrentDate()}`} />
     <ServerVac vacanciesCount={3}/>
+    <Link href="/vacancy" className="flex justify-center"><Button text={"Больше"} className="btn btn-outline btn-error mx-auto "/> </Link>
     <Useful/>
     <News/>
     {/* <CarouselManager/> */}

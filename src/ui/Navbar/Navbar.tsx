@@ -57,7 +57,7 @@ export default function Navbar() {
                                 <li><Link href='/vacancy?category=indor'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
                                 <li><Link href='/vacancy?category=outdor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
                                 <li><Link href='/vacancy?category=krovl'><p className='text-xl w-max'>Кровля/Фасады</p></Link></li>
-                                <li><Link href='/vacancy?category=no-experience'><p className='text-xl w-max'>Без опыта</p></Link></li>
+                                <li><Link href='/vacancy?category=noexp'><p className='text-xl w-max'>Без опыта</p></Link></li>
                             </ul>
                         </details>
                     </li>
