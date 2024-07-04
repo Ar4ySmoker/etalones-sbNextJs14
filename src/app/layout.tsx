@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { LoadingProvider } from '@/app/context/LoadingContext';
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
@@ -18,7 +19,11 @@ export default function RootLayout({
     <html lang="ru" 
     // data-theme="cupcake"
     >
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <LoadingProvider>
+          {children}
+        </LoadingProvider>
+      </body>
     </html>
   );
 }
