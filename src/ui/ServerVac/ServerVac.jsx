@@ -74,6 +74,7 @@ export default function ServerVac({ vacanciesCount, enableCategorySwitcher = fal
                                 <figure>
                                     {vacancy.image ? (
                                         <Image
+                                        loading='lazy'
                                             src={`data:${vacancy.image.contentType};base64,${Buffer.from(vacancy.image.data).toString('base64')}`}
                                             alt={vacancy.image.name}
                                             width={400} height={400}
