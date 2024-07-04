@@ -1,20 +1,21 @@
-'use client'
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import Button from "../Buttons/Button";
-import { useEffect, useState } from 'react';
 import { Telegram } from '@/svg/telegram';
 import { Viber } from '@/svg/viber';
 import { WhatsApp } from '@/svg/whatsapp';
 import Link from 'next/link';
 import CategorySwitcher from '@/ui/CategorySwitcher/CategorySwitcher'; // Импорт нового компонента
+import { useLoading } from '@/app/context/LoadingContext';
 
 export default function ServerVac({ vacanciesCount, enableCategorySwitcher = false }) {
     const [vacancy, setVacancy] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState("all");
+    const { isLoading, setLoading } = useLoading();
 
-    const fetchVacany = async () => {
+    const fetchVacancy = async () => {
+        setLoading(true);
         try {
             // const response = await fetch('http://localhost:3000/api/vacancy');
             const response = await fetch('https://www.etalones.com/api/vacancy');
@@ -22,15 +23,16 @@ export default function ServerVac({ vacanciesCount, enableCategorySwitcher = fal
             console.log('VACANCY', data);
 
             setVacancy(data);
-            setIsLoading(false);
+            setLoading(false);
         } catch (error) {
             console.error("Error fetching vacancies:", error);
-            setIsLoading(false);
+            setLoading(false);
         }
     };
 
     useEffect(() => {
-        fetchVacany();
+        setLoading(true);
+        fetchVacancy();
     }, []);
 
     // Функция для получения уникальных категорий
@@ -50,8 +52,12 @@ export default function ServerVac({ vacanciesCount, enableCategorySwitcher = fal
     return (
         <>
             {isLoading ? (
-                <p><span className="loading loading-spinner loading-md"></span> Загрузка...</p>
-            ) : (
+                
+                <div className="flex flex-wrap justify-center w-full">
+                        {[...Array(vacanciesCount)].map((_, index) => (
+                    <div key={index} className="card w-96 m-4 skeleton h-96"></div>
+                ))}
+            </div>        ) : (
                 <div>
                     {/* Переключатель категорий */}
                     {enableCategorySwitcher && (
