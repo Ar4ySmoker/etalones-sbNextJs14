@@ -1,17 +1,23 @@
 // src/components/ManagerCard.tsx
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Viber } from '@/svg/viber';
 import { Telegram } from '@/svg/telegram';
 import { WhatsApp } from '@/svg/whatsapp';
-import { ManagerField } from '@/lib/definitions';
 
-interface Props {
-    managers: ManagerField[];
-}
 
-const ManagerCard: React.FC<Props> = ({ managers }) => {
+
+const ManagerCard = ({ managers }) => {
+    const [imageSrc, setImageSrc] = useState('');
+    useEffect(() => {
+        if (managers.image && managers.image.data) {
+          // Создание URL для изображения из Base64 данных
+          const base64Data = Buffer.from(managers.image.data).toString('base64');
+          const imageUrl = `data:${managers.image.contentType};base64,${base64Data}`;
+          setImageSrc(imageUrl);
+        }
+      }, [managers]);
     return (
         <div className="my-3">
             <div className="text-3xl font-bold text-center text-red-700 py-3">Наши менеджеры</div>
@@ -20,12 +26,16 @@ const ManagerCard: React.FC<Props> = ({ managers }) => {
                     <div key={manager._id} className="flex flex-col items-center my-5">
                         <div className="avatar flex flex-col items-center">
                             <div className="rounded-full">
-                                <Image
-                                    src={`/images/managers/${manager.name.toLowerCase().replace(/\s/g, '')}.jpg`}
-                                    alt={manager.name}
-                                    width={120}
-                                    height={120}
-                                />
+                            {imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={manager.image.name}
+            width={400}
+            height={400}
+          />
+        ) : (
+          'No image available'
+        )}
                             </div>
                             <p className="font-bold text-2xl py-3">{manager.name}</p>
                             <p className="font-semibold text-md py-1">{manager.phone}</p>

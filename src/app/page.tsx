@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Footer from "../ui/Footer/Footer";
 import FormCallBack from "../ui/FormCallBack/FormCallBack";
 import FormSubscribe from "../ui/FormSubscribe/FormSubscribe";
