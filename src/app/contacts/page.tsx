@@ -12,7 +12,7 @@ export default async function Page() {
   return (
     <>
       <Navbar />
-      <ManagerCard managers={managers} />
+      <ManagerCard />
       <FormCallBack />
       <Useful />
       <Footer />

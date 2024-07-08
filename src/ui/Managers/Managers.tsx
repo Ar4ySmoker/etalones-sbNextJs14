@@ -30,7 +30,7 @@ const ManagersPage: React.FC = () => {
 
     return (
         <div>
-            <ManagerCard managers={managers} />
+            <ManagerCard  />
         </div>
     );
 };
