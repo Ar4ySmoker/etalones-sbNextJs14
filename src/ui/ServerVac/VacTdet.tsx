@@ -146,7 +146,7 @@ const VacTdet: React.FC<Props> = ({ vacancy, managers }) => {
             <FormCallBack />
             <Title text='Похожие вакансии'/>
             <SameOneVacancy category={vacancy.category || ""} currentVacancyId={vacancy._id} count={3} />
-            <ManagerCard managers={managers} />
+            <ManagerCard  />
             <Useful />
             <Footer />
         </>
