@@ -2,7 +2,7 @@ import { connectToDB } from '@/lib/utils';
 import { Manager } from '@/lib/models';
 import { NextResponse } from "next/server";
 
-export const PUT = async (request: { formData: () => any; }, { params }: any) => {
+export const PUT = async (request, { params }) => {
     try {
         await connectToDB();
         const id = params.id;
@@ -57,7 +57,7 @@ export const PUT = async (request: { formData: () => any; }, { params }: any) =>
     }
 };
 
-export async function GET(request: any, { params }: any) {
+export async function GET(request, { params }) {
     const { id } = params;
 
     try {
