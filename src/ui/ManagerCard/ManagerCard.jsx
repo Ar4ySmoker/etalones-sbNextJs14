@@ -19,7 +19,7 @@ const ManagerCard = () => {
     const fetchManagers = async () => {
         try {
             // const response = await fetch('http://localhost:3000/api/manager');
-            const response = await fetch('https://www.etalones.com/3000/api/manager');
+            const response = await fetch('https://www.etalones.com/api/manager');
 
             const data = await response.json();
             
