@@ -29,6 +29,7 @@ interface Props {
         grafik: string;
         documents: string;
         manager: {
+            image: any;
             name: string;
             phone: string;
             viber: string;
@@ -41,7 +42,7 @@ interface Props {
     managers: ManagerField[];
 }
 
-const VacTdet: React.FC<Props> = ({ vacancy, managers }) => {
+const VacTdet: React.FC<Props> = ({ vacancy }) => {
     const {
         home_descr,
         work_descr,
@@ -54,8 +55,6 @@ const VacTdet: React.FC<Props> = ({ vacancy, managers }) => {
     const workDet = work_descr ? work_descr.split(';') : [];
     const workGrafic = grafik ? grafik.split(';') : [];
 
-    const managerName = vacancy.manager.name.toLowerCase().replace(/\s/g, '');
-    const managerImage = `/images/managers/${managerName}.jpg`;
     const managerPhone = `+${vacancy.manager.phone}`;
 
     return (
@@ -130,8 +129,16 @@ const VacTdet: React.FC<Props> = ({ vacancy, managers }) => {
                 <div className='flex flex-col items-center'>
                     <p>Контакт менеджера:</p>
                     <div className="avatar flex flex-col items-center">
-                        <div className="rounded-full">
-                            <Image src={managerImage} width={200} height={200} alt='manager' />
+                        <div className="rounded-full w-[150px]">
+                        {vacancy.manager.image ? (
+                                        <Image
+                                        src={`data:${vacancy.manager.image.contentType};base64,${Buffer.from(vacancy.manager.image.data).toString('base64')}`}
+                                        alt={vacancy.manager.image.name}
+                                            width={150} height={150}
+                                        />
+                                    ) : (
+                                        'No image'
+                                    )}
                         </div>
                     </div>
                     <p>{vacancy.manager.name}</p>
