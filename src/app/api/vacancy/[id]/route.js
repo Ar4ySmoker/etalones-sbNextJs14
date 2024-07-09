@@ -1,7 +1,27 @@
+// import { connectToDB } from '@/lib/utils';
+// import { VacancyOnServer } from '@/lib/models';
+// import { NextResponse } from "next/server";
+
+
+// export async function GET(request, { params }) {
+//     const { id } = params;
+//     await connectToDB();
+//     try {
+//         const vacancy = await VacancyOnServer.findById(id).populate('manager');
+//         if (!vacancy) {
+//             console.error('Vacancy not found');
+//             return NextResponse.json({ message: "Vacancy not found" }, { status: 404 });
+//         }
+//         return NextResponse.json({ vacancy }, { status: 200 });
+//     } catch (error) {
+//         console.error('Error fetching vacancy:', error); // Лог ошибки
+//         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
+//     }
+// }
+
 import { connectToDB } from '@/lib/utils';
 import { VacancyOnServer } from '@/lib/models';
-import { NextResponse } from "next/server";
-
+import { NextResponse } from 'next/server';
 
 export async function GET(request, { params }) {
     const { id } = params;
@@ -12,10 +32,10 @@ export async function GET(request, { params }) {
             console.error('Vacancy not found');
             return NextResponse.json({ message: "Vacancy not found" }, { status: 404 });
         }
+        console.log('Fetched vacancy:', vacancy); // Добавить логирование для проверки данных
         return NextResponse.json({ vacancy }, { status: 200 });
     } catch (error) {
-        console.error('Error fetching vacancy:', error); // Лог ошибки
+        console.error('Error fetching vacancy:', error);
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }
-
