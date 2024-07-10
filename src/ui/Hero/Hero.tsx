@@ -1,32 +1,28 @@
-// pages/index.js (или файл твоей главной страницы)
+// pages/index.tsx
 
-'use client';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import CountUp from 'react-countup';
+import { useVacancyContext } from '@/app/context/VacancyContext';
 
-export default function Home() {
-  const [vacancyCount, setVacancyCount] = useState(0);
-  const [totalPositionsAvailable, setTotalPositionsAvailable] = useState(0);
+const Home: React.FC = () => {
+  const { vacancies, loading } = useVacancyContext();
 
-  const fetchVacancies = async () => {
-    try {
-      const response = await fetch('https://www.etalones.com/api/vacancy');
-      const data = await response.json();
+  // Вычисляем количество вакансий и свободных мест
+  const vacancyCount = vacancies.length;
+  const totalPositionsAvailable = vacancies.reduce(
+    (acc: number, vacancy: { positions_available: string; }) => acc + parseInt(vacancy.positions_available),
+    0
+  );
 
-      const vacancyCount = data.length;
-      const totalPositionsAvailable = data.reduce((acc: number, vacancy: { positions_available: string; }) => acc + parseInt(vacancy.positions_available), 0);
-
-      setVacancyCount(vacancyCount);
-      setTotalPositionsAvailable(totalPositionsAvailable);
-    } catch (error) {
-      console.error("Ошибка при загрузке вакансий:", error);
-    }
-  };
-
+  // Используем useEffect только для загрузки данных при монтировании компонента
   useEffect(() => {
-    fetchVacancies();
+    // Тут можно оставить пустое тело, так как данные уже загружены через контекст
   }, []);
+
+  if (loading) {
+    return <div>Загрузка...</div>;
+  }
 
   return (
     <div className="hero min-h-[500px]" style={{ backgroundImage: 'url(/images/primary.jpg)' }}>
@@ -45,3 +41,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
