@@ -19,8 +19,8 @@ export const VacancyContextProvider = ({ children }: Props) => {
   // Функция для загрузки вакансий
   const fetchVacancies = async () => {
     try {
-    //   const response = await fetch("https://www.etalones.com/api/vacancy");
-      const response = await fetch("http://localhost:3000/api/vacancy");
+      const response = await fetch("https://www.etalones.com/api/vacancy");
+    //   const response = await fetch("http://localhost:3000/api/vacancy");
 
       const data = await response.json();
       setVacancies(data);
