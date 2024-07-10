@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { LoadingProvider } from '@/app/context/LoadingContext';
+import { VacancyContextProvider } from "./context/VacancyContext";
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
     >
       <body className={montserrat.className}>
         <LoadingProvider>
+        <VacancyContextProvider>
           {children}
+          </VacancyContextProvider>
         </LoadingProvider>
       </body>
     </html>

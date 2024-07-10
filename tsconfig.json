@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/svg/instagram.jsx", "src/app/vacT/[id]/page.jsx", "src/app/api/vacancy/[id]/route.js", "src/app/api/vacancy/[id]/route.js", "src/ui/Managers/ManagerProfile.jsx", "src/app/vacancy/[id]/page.jsx", "src/ui/ServerVac/VacTdet.jsx", "src/ui/ManagerCard/ManagerCard.jsx", "src/app/api/manager/[id]/route.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/svg/instagram.jsx", "src/app/vacT/[id]/page.jsx", "src/app/api/vacancy/[id]/route.js", "src/app/api/vacancy/[id]/route.js", "src/ui/Managers/ManagerProfile.jsx", "src/app/vacancy/[id]/page.jsx", "src/ui/ServerVac/VacTdet.jsx", "src/ui/ManagerCard/ManagerCard.jsx", "src/app/api/manager/[id]/route.ts", "src/ui/ServerVac/ServerVac.jsx"],
   "exclude": ["node_modules"]
 }
