@@ -7,10 +7,10 @@ export async function GET(req: NextRequest) {
 
   try {
     // Подсчет количества вакансий
-    const vacancyCount = await VacancyOnServer.countDocuments();
+    const vacancyCount = await VacancyOnServer.find({ published: true }).countDocuments();
 
     // Получаем все вакансии с позициями в числовом формате
-    const vacancies = await VacancyOnServer.find().select('positions_available');
+    const vacancies = await VacancyOnServer.find({ published: true }).select('positions_available');
 
     // Суммирование количества свободных мест
     let availablePositions = 0;
