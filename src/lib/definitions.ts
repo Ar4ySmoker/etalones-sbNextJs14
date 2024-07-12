@@ -158,28 +158,45 @@ export type PartnersField = {
   name: string;
   companyName: string;
 }
+// export interface Vacancy {
+//   _id?: string;
+//   job_title?: string;
+//   location?: string;
+//   roof_type?: string;
+//   salary?: string;
+//   homePrice?: string;
+//   auto?: string;
+//   documents?: string;
+//   positions_available?: number;
+//   contact?: string;
+//   managerImg?: string;
+//   telegram?: string;
+//   viber?: string;
+//   whatsapp?: string;
+//   image?: string;
+//   category?: string;
+//   work_descr?: string;
+//   home_descr?: string;
+//   grafik?: string;
+// }
 export interface Vacancy {
-  _id?: string;
-  job_title?: string;
-  location?: string;
+  _id: string;
+  job_title: string;
+  location: string;
   roof_type?: string;
-  salary?: string;
-  homePrice?: string;
-  auto?: string;
-  documents?: string;
-  positions_available?: number;
-  contact?: string;
-  managerImg?: string;
-  telegram?: string;
-  viber?: string;
-  whatsapp?: string;
-  image?: string;
-  category?: string;
-  work_descr?: string;
-  home_descr?: string;
-  grafik?: string;
+  salary: string;
+  homePrice: string;
+  auto: string;
+  documents: string;
+  viber: string;
+  telegram: string;
+  whatsapp: string;
+  image?: {
+      contentType: string;
+      data: string;
+      name: string;
+  };
 }
-
 export interface News {
   _id?: string;
   title?: string;

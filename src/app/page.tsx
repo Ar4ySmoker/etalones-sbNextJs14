@@ -6,11 +6,11 @@ import FormSubscribe from "../ui/FormSubscribe/FormSubscribe";
 import Hero from "../ui/Hero/Hero";
 import Navbar from "../ui/Navbar/Navbar";
 import News from "../ui/News/News";
-import ServerVac from "@/ui/ServerVac/ServerVac";
 import Title from "@/ui/Title/Title";
 import Button from "@/ui/Buttons/Button";
 import Link from "next/link";
 import Useful from '@/ui/Useful/Useful';
+import Card from "@/ui/VacancyUrgently/VacancyUrgently";
 
 export default function Home() {
 
@@ -30,7 +30,7 @@ export default function Home() {
       <Hero />
       <FormCallBack />
       <Title text={`Актуальные вакансии на ${getCurrentDate()}`} />
-      <ServerVac vacanciesCount={3} />
+      <Card count={3}/>
       <Link href="/vacancy" className="flex justify-center">
         <Button text={"Больше"} className="btn btn-outline btn-error mx-auto" />
       </Link>

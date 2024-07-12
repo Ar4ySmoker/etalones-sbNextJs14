@@ -23,6 +23,7 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <LoadingProvider>
         <VacancyContextProvider>
+          
           {children}
           </VacancyContextProvider>
         </LoadingProvider>
