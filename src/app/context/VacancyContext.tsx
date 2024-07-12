@@ -20,7 +20,9 @@ export const VacancyContextProvider = ({ children }: Props) => {
   // Функция для загрузки всех вакансий
   const fetchAllVacancies = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/vacancy");
+      // const response = await fetch("http://localhost:3000/api/vacancy");
+      const response = await fetch("https://www.etalones.com/api/vacancy");
+
       const data = await response.json();
       setVacancies(data);
       setLoading(false);
@@ -33,7 +35,9 @@ export const VacancyContextProvider = ({ children }: Props) => {
   // Функция для загрузки срочных вакансий
   const fetchUrgentVacancies = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/vacancy/urgently");
+      // const response = await fetch("http://localhost:3000/api/vacancy/urgently");
+      const response = await fetch("https://www.etalones.com/api/vacancy/urgently");
+
       const data = await response.json();
       setUrgentVacancies(data);
     } catch (error) {
