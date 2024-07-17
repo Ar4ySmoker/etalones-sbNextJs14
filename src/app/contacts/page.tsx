@@ -11,11 +11,9 @@ export default async function Page() {
 
   return (
     <>
-      <Navbar />
       <ManagerCard />
       <FormCallBack />
       <Useful />
-      <Footer />
     </>
   );
 }

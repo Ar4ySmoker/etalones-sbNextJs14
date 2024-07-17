@@ -44,7 +44,6 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Navbar />
       <div className="tabs justify-center flex flex-wrap mb-6 font-bold">
         {/* Используем компонент Link для перехода на другие страницы */}
         <Link href="/userfull/1">
@@ -99,7 +98,6 @@ export default async function Page({ params }: PageProps) {
       <FormCallBack />
       <Useful />
       <Managers />
-      <Footer />
     </>
   );
 }

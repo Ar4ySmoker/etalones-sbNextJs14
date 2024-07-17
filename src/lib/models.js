@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+const reviewsShema = new mongoose.Schema({
+  name:{
+    type: String
+  },
+  rating:{
+    type: String
+  },
+  comment:{
+    type: String
+  }
+},{ timestamps: true })
 
 const managerShema = new mongoose.Schema({
   image: {
@@ -113,6 +124,7 @@ type: String,
 },
 { timestamps: true }
 )
+export const Reviews = mongoose.models.Reviews || mongoose.model("Reviews", reviewsShema)
 export const VacancyOnServer = mongoose.models.VacancyOnServer || mongoose.model("VacancyOnServer", vacancyOnServerShema)
 export const Vacancy = mongoose.models.Vacancy || mongoose.model("Vacancy", vacancyShema)
 export const Manager = mongoose.models.Manager || mongoose.model("Manager", managerShema)

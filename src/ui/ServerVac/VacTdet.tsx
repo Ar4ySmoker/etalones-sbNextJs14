@@ -59,7 +59,6 @@ const VacTdet: React.FC<Props> = ({ vacancy }) => {
 
     return (
         <>
-            <Navbar />
             <div className='md:w-full flex flex-col items-between gap-10 px-10'>
                 <div className='flex justify-between gap-3 flex-wrap'>
                     <div className='py-10 flex flex-col justify-between'>
@@ -155,7 +154,6 @@ const VacTdet: React.FC<Props> = ({ vacancy }) => {
             <SameOneVacancy category={vacancy.category || ""} currentVacancyId={vacancy._id} count={3} />
             <ManagerCard  />
             <Useful />
-            <Footer />
         </>
     );
 }

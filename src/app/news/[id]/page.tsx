@@ -45,7 +45,6 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <Navbar />
       <div className="mx-auto lg:p-16 md:p-8 sm:p-4 min-w-0 md:w-[800px] flex-auto lg:static lg:max-h-full lg:overflow-visible">
         <div className="w-full flex">
             <div className="min-w-0 flex-auto items-center px-4 sm:px-6 xl:px-8 pt-10 pb-24 lg:pb-16">
@@ -86,7 +85,6 @@ export default async function Page({ params }: PageProps) {
       <FormCallBack />
       <Useful />
       <Managers />
-      <Footer />
     </>
   );
 }
