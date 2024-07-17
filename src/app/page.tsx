@@ -26,7 +26,6 @@ export default function Home() {
 
   return (
     <div className="bg-base-200">
-      <Navbar />
       <Hero />
       <FormCallBack />
       <Title text={`Актуальные вакансии на ${getCurrentDate()}`} />
@@ -37,7 +36,6 @@ export default function Home() {
       <Useful />
       <News />
       <FormSubscribe />
-      <Footer />
     </div>
   );
 }

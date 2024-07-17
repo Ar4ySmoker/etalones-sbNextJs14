@@ -3,6 +3,8 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { LoadingProvider } from '@/app/context/LoadingContext';
 import { VacancyContextProvider } from "./context/VacancyContext";
+import Navbar from "@/ui/Navbar/Navbar";
+import Footer from "@/ui/Footer/Footer";
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
@@ -21,10 +23,11 @@ export default function RootLayout({
     // data-theme="cupcake"
     >
       <body className={montserrat.className}>
+        <Navbar />
         <LoadingProvider>
         <VacancyContextProvider>
-          
           {children}
+          <Footer />
           </VacancyContextProvider>
         </LoadingProvider>
       </body>

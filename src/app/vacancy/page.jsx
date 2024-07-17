@@ -7,10 +7,8 @@ export default function Page(){
     return(
 
         <>
-         <Navbar />
          <Title text={'Наши вакансии'} />
         <ServerVac vacanciesCount={50} enableCategorySwitcher={true}/>
-        <Footer />
 
         </>
     )
