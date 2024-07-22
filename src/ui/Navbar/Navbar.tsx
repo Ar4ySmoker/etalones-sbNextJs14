@@ -42,7 +42,7 @@ export default function Navbar() {
                                 </ul>
                             </details>
                         </li>
-                        <li><a href=""><p className='text-xl  w-max'>Контакты</p></a></li>
+                        <li><Link href="/contacts"><p className='text-xl  w-max'>Контакты</p></Link></li>
                     </ul>
                 </div>
                 <Link href='/'><Logo /></Link>
