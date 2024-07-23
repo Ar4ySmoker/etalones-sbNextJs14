@@ -34,7 +34,6 @@ const NewsPage = () => {
   }, [category]);
   return (
       <>
-  <Navbar/>
   <Title text='Новости'/>
   <div className="tabs justify-center flex flex-wrap mb-6 font-bold">
                 <a className={`tab ${!category ? 'tab-active' : ''}`} onClick={() => router.push('/news')}>Все</a>
