@@ -32,7 +32,6 @@ const UserfullPage = () => {
   }, [category]);
   return (
       <>
-  <Navbar/>
   <Title text='Полезно знать'/>            
             <Suspense fallback={<Loading/>}>
             <CardUserfull userfullData={userfullData} count={8}/>
