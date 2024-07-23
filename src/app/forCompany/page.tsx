@@ -10,7 +10,6 @@ import Link from "next/link";
 export default function Page() {
     return (
         <>
-        <Navbar/>
      <div className="hero  bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse">
   <div className="max-w-sm rounded-lg shadow-2xl overflow-hidden">
