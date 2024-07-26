@@ -153,8 +153,8 @@ const newsSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 export const News = mongoose.models.News || mongoose.model("News", newsSchema);
-export const Reviews = mongoose.models.Reviews || mongoose.model("Reviews", reviewsShema)
-export const VacancyOnServer = mongoose.models.VacancyOnServer || mongoose.model("VacancyOnServer", vacancyOnServerShema)
-export const Vacancy = mongoose.models.Vacancy || mongoose.model("Vacancy", vacancyShema)
-export const Manager = mongoose.models.Manager || mongoose.model("Manager", managerShema)
+export const Reviews = mongoose.models.Reviews || mongoose.model("Reviews", reviewsShema);
+export const VacancyOnServer = mongoose.models.VacancyOnServer || mongoose.model("VacancyOnServer", vacancyOnServerShema);
+export const Vacancy = mongoose.models.Vacancy || mongoose.model("Vacancy", vacancyShema);
+export const Manager = mongoose.models.Manager || mongoose.model("Manager", managerShema);
 export const Candidate = mongoose.models.Candidate || mongoose.model("Candidate", candidateSchema);

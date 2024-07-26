@@ -1,5 +1,4 @@
 'use client'
-import Navbar from '@/ui/Navbar/Navbar';
 import Footer from '@/ui/Footer/Footer';
 import FormCallBack from '@/ui/FormCallBack/FormCallBack';
 import FormSubscribe from '@/ui/FormSubscribe/FormSubscribe';

@@ -39,7 +39,7 @@ const NewsPrimary = () => {
           </div>
         </div>
       </div>
-      <CardNews newsData={newsData} count={6} />
+      <CardNews  />
     </>
   );
 }
