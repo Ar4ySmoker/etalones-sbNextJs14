@@ -6,9 +6,6 @@ import { Userfull } from '@/lib/definitions';
 import FormCallBack from '@/ui/FormCallBack/FormCallBack';
 import Useful from '@/ui/Useful/Useful';
 import Managers from '@/ui/Managers/Managers';
-import Footer from '@/ui/Footer/Footer';
-import Navbar from '@/ui/Navbar/Navbar';
-import CardNews from '@/ui/CardNews/CardNews';
 import Title from '@/ui/Title/Title';
 import Link from 'next/link'; // Импортируем компонент Link для навигации
 import CardUserfull from '@/ui/CardUserfull/CardUserfull';

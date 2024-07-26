@@ -1,54 +1,39 @@
-import { NextResponse } from 'next/server';
+// import { NextResponse } from 'next/server';
+// import { connectToDB } from '@/lib/utils';
+// import {News} from '@/lib/models';
+
+// export const GET = async () => {
+//     try {
+//         await connectToDB();
+//         const news = await News.find();
+//         return new NextResponse(JSON.stringify(news), { status: 200 });
+//     } catch (error) {
+//         return new NextResponse("error in fetching " + error, { status: 500 });
+//     }
+// };
+
+import { NextRequest, NextResponse } from 'next/server';
 import { connectToDB } from '@/lib/utils';
 import {News} from '@/lib/models';
 
-export const GET = async () => {
+export const GET = async (request: NextRequest) => {
     try {
         await connectToDB();
-        const news = await News.find();
-        return new NextResponse(JSON.stringify(news), { status: 200 });
-    } catch (error) {
-        return new NextResponse("error in fetching " + error, { status: 500 });
-    }
-};
+        const { searchParams } = new URL(request.url);
+        const category = searchParams.get('category');
 
-export const POST = async (request: { formData: () => any; }) => {
-    try {
-        await connectToDB();
+        type QueryType = {
+            category?: string;
+          };
+          const query: QueryType = {};
+    if (category) query.category = category;
+  
+        const news = await News.find(query);
 
-        const data = await request.formData();
-        const file = data.get('file');
-        const source = data.get('source');
-        const title = data.get('title');
-        const category = data.get('category');
-        const description = data.get('description');
-        const content = JSON.parse(data.get('content'));
-
-        let image = null;
-        if (file) {
-            const bufferData = await file.arrayBuffer();
-            const buffer = Buffer.from(bufferData);
-            image = {
-                name: file.name,
-                data: buffer,
-                contentType: file.type
-            };
-        }
-
-        const newNews = new News({
-            image,
-            source,
-            title,
-            category,
-            description,
-            content
-        });
-
-        await newNews.save();
-
-        return new NextResponse(JSON.stringify({ success: true, message: "News created successfully", news: newNews }), { status: 201 });
-
-    } catch (error) {
-        return new NextResponse(JSON.stringify({ success: false, message: "Error creating news", error }), { status: 500 });
-    }
+        const response = { news };
+        return new NextResponse(JSON.stringify(response), { status: 200 });
+  } catch (error) {
+    console.error("Error in fetching:", error);
+    return new NextResponse("Error in fetching: " + error, { status: 500 });
+  }
 };
