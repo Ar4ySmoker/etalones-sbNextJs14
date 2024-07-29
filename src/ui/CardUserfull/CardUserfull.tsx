@@ -1,80 +1,46 @@
-'use client';
-
-import React from 'react';
 import Link from 'next/link';
-// import ModalForm from '@/app/ui/dashboard/ModalForm/ModalForm';
+import { Userfull } from '@/lib/definitions';
+import Image from 'next/image';
 
-const WorkCandidateTable = ({ data }) => {
-    // const [selectedCandidate, setSelectedCandidate] = useState<any | null>(null);
-    // const [isModalOpen, setIsModalOpen] = useState(false);
+interface CardNewsProps {
+  userfullData: Userfull[];
+  count: number;
+}
 
-    // const fetchCandidateData = async (candidateId: string) => {
-    //     const response = await fetch(`/api/candidates/${candidateId}`);
-    //     const result = await response.json();
-    //     return result.candidate;
-    // };
-
-    // const openModal = async (candidateId: string) => {
-    //     const candidate = await fetchCandidateData(candidateId);
-    //     setSelectedCandidate(candidate);
-    //     setIsModalOpen(true);
-    // };
-
-    // const closeModal = () => {
-    //     setSelectedCandidate(null);
-    //     setIsModalOpen(false);
-    // };
-
-    return (
-        <div className="overflow-x-auto">
-            <table className="table table-xs">
-                <thead>
-                    <tr className="grid grid-cols-4">
-                        <th>Name</th>
-                        <th>Трудоустройство</th>
-                        <th>Фирма</th>
-                        <th>Детали</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((candidate, _id) => (
-                        <tr key={_id} className="grid grid-cols-4">
-                            <td>{candidate.name}</td>
-                            <td>
-                                {candidate.statusFromPartner.status}
-                                <div>
-                                    {candidate.statusFromPartner.from ? (
-                                        <div>дата трудоустроуства {candidate.statusFromPartner.from}</div>
-                                    ) : null}
-                                    {candidate.statusFromPartner.to ? (
-                                        <div>до {candidate.statusFromPartner.to}</div>
-                                    ) : null}
-                                </div>
-                                <div>
-                                    {candidate.statusFromPartner.dismissalDate ? (
-                                        <div>дата увольнения {candidate.statusFromPartner.dismissalDate}</div>
-                                    ) : null}
-                                </div>
-                            </td>
-                            <td>{candidate.partners?.companyName || 'Неизвестно'}</td>
-                            <td>
-                                <Link href={`/dashboard/candidates/${candidate._id}`}>
-                                    <button className="btn btn-sm btn-success w-max">Подробнее</button>
-                                </Link>
-                                {/* <button
-                                    className="btn btn-sm btn-warning w-max ml-2"
-                                    onClick={() => openModal(candidate._id)}
-                                >
-                                    Выставить счёт
-                                </button> */}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-           
+const CardUserfull: React.FC<CardNewsProps> = ({ userfullData, count }) => {
+  return (
+    <>
+      <div className="pt-5 pb-10 lg:pt-[20px] lg:pb-20">
+        <div className="container mx-auto">
+          <div className="mx-4 flex flex-wrap">
+            {userfullData.slice( 0, count).map(userfullItem => (
+              <div key={userfullItem._id} className="w-full px-4 md:w-1/2 lg:w-1/3">
+                <div className="mx-auto mb-10 max-w-[370px]">
+                  <div className="mb-8 overflow-hidden rounded">
+                    <Image src={userfullItem.image || "/default-image.png"} alt='default-image' width={400} height={400}/>
+                    {/* <img src={newsItem.image} alt="image" className="w-full" /> */}
+                  </div>
+                  <div>
+                    <span className="bg-primary mb-5 inline-block rounded py-1 px-4 text-center text-xs font-semibold leading-loose text-white">
+                      {userfullItem.h1}
+                    </span>
+                    <h3>
+                      <Link href={`/userfull/${userfullItem._id}`} passHref className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl">
+                          {userfullItem.title}
+                      </Link>
+                    </h3>
+                    <p className="text-body-color text-base">
+                     {userfullItem.description?.substring(0,100)}...
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-    );
-};
+      </div>
+    </>
+  );
+}
 
-export default WorkCandidateTable;
+export default CardUserfull;

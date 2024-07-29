@@ -8,7 +8,6 @@ import Useful from '@/ui/Useful/Useful';
 import Managers from '@/ui/Managers/Managers';
 import Title from '@/ui/Title/Title';
 import Link from 'next/link'; // Импортируем компонент Link для навигации
-import CardUserfull from '@/ui/CardUserfull/CardUserfull';
 
 // Функция для загрузки конкретной новости по идентификатору
 async function fetchNews(id: string): Promise<Userfull | null> {
@@ -91,7 +90,7 @@ export default async function Page({ params }: PageProps) {
         </div>
       </div>
       <Title text='Другое полезное' />
-      <CardUserfull userfullData={userfull} count={-1}/>
+      {/* <CardUserfull /> */}
       <FormCallBack />
       <Useful />
       <Managers />

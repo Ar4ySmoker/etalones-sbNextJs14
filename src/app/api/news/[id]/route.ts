@@ -1,21 +1,21 @@
-import { NextResponse } from 'next/server';
 import { connectToDB } from '@/lib/utils';
-import { News } from '@/lib/models';
+import { News} from '@/lib/models';
+import { NextResponse } from "next/server";
 
-export const GET = async (req: any, { params }: any) => {
+
+
+export async function GET(request: any, { params }: any) {
     const { id } = params;
+    await connectToDB();
     try {
-        await connectToDB();
-        const newsItem = await News.findById(id);
-        if (!newsItem) {
-            return new NextResponse('News item not found', { status: 404 });
+        const news = await News.findById(id);
+        if (!news) {
+            console.error('News not found');
+            return NextResponse.json({ message: "News not found" }, { status: 404 });
         }
-        return new NextResponse(JSON.stringify(newsItem), { status: 200 });
-    }  catch (error) {
-        // Приведение типа error к объекту с полем message
-        if (error instanceof Error) {
-            return new NextResponse('Error fetching news item: ' + error.message, { status: 500 });
-        }
-        return new NextResponse('An unknown error occurred', { status: 500 });
+        return NextResponse.json({ news }, { status: 200 });
+    } catch (error) {
+        console.error('Error fetching news:', error); // Лог ошибки
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
-};
+}

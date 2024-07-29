@@ -6,9 +6,9 @@ import FormSubscribe from '@/ui/FormSubscribe/FormSubscribe';
 import Title from '@/ui/Title/Title';
 import Useful from '@/ui/Useful/Useful';
 import { Suspense } from 'react';
-import CardNews from '@/ui/CardNews/CardNews';
 import Loading from '../Loading';
 import ServerVac from '@/ui/ServerVac/ServerVac';
+import NewsList from '@/ui/NewsPrimary/NewsPrimary';
 
 
 
@@ -18,9 +18,9 @@ const NewsPage = () => {
       <>
   <Title text='Новости'/>
 
-            
+            {/* <CardNews category='journeys' currentNewsId={undefined}  /> */}
             <Suspense fallback={<Loading/>}>
-            <CardNews  />
+            <NewsList/>
             </Suspense>
   <FormCallBack/>
   <Title text={'Подобные вакансии'}/>
