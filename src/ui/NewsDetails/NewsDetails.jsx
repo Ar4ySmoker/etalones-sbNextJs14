@@ -5,6 +5,8 @@ import Breadcrumbs from '@/ui/Breadcrumbs/Breadcrumbs';
 import FormCallBack from '@/ui/FormCallBack/FormCallBack';
 import Useful from '@/ui/Useful/Useful';
 import ManagerCard from '../ManagerCard/ManagerCard';
+import CardNews from '../CardNews/CardNews';
+import convertLinks from '@/utils/convertLinks';
 
 const EditNewsForm = ({ news }) => {
     return (
@@ -33,7 +35,7 @@ const EditNewsForm = ({ news }) => {
                             {news.content?.map((article, index) => (
                                 <div key={index} className="mb-5">
                                     <h3 className='font-bold mb-3'>{article.title}</h3>
-                                    <p className='font-medium'>{article.content}</p>
+                                    <p className='font-medium'>{convertLinks(article.content)}</p>
                                 </div>
                             ))}
                         </div>
@@ -41,13 +43,17 @@ const EditNewsForm = ({ news }) => {
                 </div>
                 <div className='flex justify-between'>
                     <p>{new Date(news.createdAt).toLocaleDateString()}</p>
-                    <div>Источник: <a href={news.source} target='_blank' rel='noopener noreferrer'>{news.source}</a></div>
+                    <div>Источник: <p >{convertLinks(news.source)}</p></div>
                 </div>
+            </div>
+            <div className="mt-10">
+                <h2 className="text-2xl font-bold text-center">Похожие новости</h2>
+                <CardNews category={news.category} currentNewsId={news._id}/>
             </div>
             <FormCallBack />
             <Useful />
             <ManagerCard />
-
+           
         </>
     );
 };

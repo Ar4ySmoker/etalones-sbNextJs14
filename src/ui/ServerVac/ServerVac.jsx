@@ -22,7 +22,7 @@ export default function ServerVac({ vacanciesCount, enableCategorySwitcher = fal
     const categories = getCategories(vacancies);
 
     // Стейт для выбранной категории
-    const [selectedCategory, setSelectedCategory] = React.useState("all");
+    const [selectedCategory, setSelectedCategory] = React.useState("Все вакансии");
 
     // Фильтруем вакансии на основе выбранной категории
     const filteredVacancies = selectedCategory === "all" 
