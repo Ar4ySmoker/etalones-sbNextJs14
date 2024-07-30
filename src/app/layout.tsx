@@ -5,6 +5,7 @@ import { LoadingProvider } from '@/app/context/LoadingContext';
 import { VacancyContextProvider } from "./context/VacancyContext";
 import Navbar from "@/ui/Navbar/Navbar";
 import Footer from "@/ui/Footer/Footer";
+import { useVacancyContext } from '@/app/context/VacancyContext';
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
@@ -18,6 +19,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+  
   return (
     <html lang="ru" 
     // data-theme="cupcake"
