@@ -10,7 +10,7 @@ export default function Navbar() {
     return (
         <div className='navbar text-white bg-gradient-red text-xl sticky top-0 z-100'>
             <div className="navbar-start">
-                <div className="dropdown ">
+                <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
@@ -21,8 +21,8 @@ export default function Navbar() {
                             <details>
                                 <summary ><p className='text-xl w-max'>Вакансии</p></summary>
                                 <ul className="p-2 bg-gradient-red z-10">
-                                <li><Link href='/vacancy'><p className='text-xl w-max' >Смотреть все</p></Link></li>
-                                <li><Link href='/vacancy?category=indor' ><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
+                                <li><Link href='/vacancy'><p className='text-xl w-max'>Смотреть все</p></Link></li>
+                                <li><Link href='/vacancy?category=indor'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
                                 <li><Link href='/vacancy?category=outdor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
                                 <li><Link href='/vacancy?category=krovl'><p className='text-xl w-max'>Кровля/Фасады</p></Link></li>
                                 <li><Link href='/vacancy?category=no-experience'><p className='text-xl w-max'>Без опыта</p></Link></li>
