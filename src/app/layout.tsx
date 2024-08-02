@@ -8,6 +8,7 @@ import Footer from "@/ui/Footer/Footer";
 import { useVacancyContext } from '@/app/context/VacancyContext';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from "@vercel/analytics/react"
+import { NewsContextProvider } from "./context/NewsContext";
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
@@ -29,10 +30,12 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <Navbar />
         <LoadingProvider>
+        <NewsContextProvider>
         <VacancyContextProvider>
           {children}
           <Footer />
           </VacancyContextProvider>
+          </NewsContextProvider>
         </LoadingProvider>
         <Analytics />
           <SpeedInsights />

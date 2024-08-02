@@ -1,4 +1,3 @@
-
 // import { NextRequest, NextResponse } from 'next/server';
 // import { connectToDB } from '@/lib/utils';
 // import { News } from '@/lib/models';
@@ -9,14 +8,10 @@
 //     const { searchParams } = new URL(request.url);
 //     const category = searchParams.get('category');
 
-//     type QueryType = {
-//       category?: string;
-//     };
-    
-//     const query: QueryType = {};
+//     const query: { category?: string } = {};
 //     if (category) query.category = category;
 
-//     const news = await News.find(query);
+//     const news = await News.find(query).sort({ createdAt: -1 });
 //     const response = { news };
 
 //     return new NextResponse(JSON.stringify(response), { status: 200 });
@@ -34,11 +29,17 @@ export const GET = async (request: NextRequest) => {
     await connectToDB();
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
+    const page = parseInt(searchParams.get('page') || '1', 10);
+    const limit = parseInt(searchParams.get('limit') || '1', 10); // Лимит по умолчанию - 1 новость
 
     const query: { category?: string } = {};
     if (category) query.category = category;
 
-    const news = await News.find(query).sort({ createdAt: -1 });
+    const news = await News.find(query)
+      // .sort({ createdAt: -1 })
+      .skip((page - 1) * limit) // Пропуск предыдущих новостей
+      .limit(limit); // Ограничение количества загружаемых новостей
+
     const response = { news };
 
     return new NextResponse(JSON.stringify(response), { status: 200 });

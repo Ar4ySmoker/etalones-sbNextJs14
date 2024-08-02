@@ -5,10 +5,10 @@ import Breadcrumbs from '@/ui/Breadcrumbs/Breadcrumbs';
 import FormCallBack from '@/ui/FormCallBack/FormCallBack';
 import Useful from '@/ui/Useful/Useful';
 import ManagerCard from '../ManagerCard/ManagerCard';
-import CardNews from '../CardNews/CardNews';
 import convertLinks from '@/utils/convertLinks';
+import SameNews from '../SameNews/SameNews';
 
-const EditNewsForm = ({ news }) => {
+const NewsDetails = ({ news }) => {
     return (
         <>
             <div className="mx-auto lg:p-16 md:p-8 sm:p-4 min-w-0 md:w-[800px] flex-auto lg:static lg:max-h-full lg:overflow-visible">
@@ -46,10 +46,10 @@ const EditNewsForm = ({ news }) => {
                     <div>Источник: <p >{convertLinks(news.source)}</p></div>
                 </div>
             </div>
-            <div className="mt-10">
+            {/* <div className="mt-10">
                 <h2 className="text-2xl font-bold text-center">Похожие новости</h2>
-                <CardNews category={news.category} currentNewsId={news._id}/>
-            </div>
+      <SameNews category={currentNews.category} currentNewsId={currentNews._id} />
+            </div> */}
             <FormCallBack />
             <Useful />
             <ManagerCard />
@@ -58,4 +58,4 @@ const EditNewsForm = ({ news }) => {
     );
 };
 
-export default EditNewsForm;
+export default NewsDetails;

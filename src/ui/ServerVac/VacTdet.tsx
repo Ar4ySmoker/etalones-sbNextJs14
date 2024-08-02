@@ -11,6 +11,7 @@ import Navbar from '@/ui/Navbar/Navbar';
 import Title from '@/ui/Title/Title';
 import SameOneVacancy from '@/ui/SameOneVacancy/SameOneVacancy';
 import { ManagerField } from '@/lib/definitions';
+import LastNews from '../LastNews/LastNews';
 
 interface Props {
     vacancy: {
@@ -152,6 +153,8 @@ const VacTdet: React.FC<Props> = ({ vacancy }) => {
             <FormCallBack />
             <Title text='Похожие вакансии'/>
             <SameOneVacancy category={vacancy.category || ""} currentVacancyId={vacancy._id} count={3} />
+            <Title text='Новости'/>
+            <LastNews/>
             <ManagerCard  />
             <Useful />
         </>
