@@ -7,7 +7,7 @@ import Navbar from "@/ui/Navbar/Navbar";
 import Footer from "@/ui/Footer/Footer";
 import { useVacancyContext } from '@/app/context/VacancyContext';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-
+import { Analytics } from "@vercel/analytics/react"
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
@@ -34,6 +34,7 @@ export default function RootLayout({
           <Footer />
           </VacancyContextProvider>
         </LoadingProvider>
+        <Analytics />
           <SpeedInsights />
       </body>
     </html>
