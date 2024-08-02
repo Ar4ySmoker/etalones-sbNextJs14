@@ -1,10 +1,8 @@
 'use client';
 
-import Footer from "../ui/Footer/Footer";
 import FormCallBack from "../ui/FormCallBack/FormCallBack";
 import FormSubscribe from "../ui/FormSubscribe/FormSubscribe";
 import Hero from "../ui/Hero/Hero";
-import Navbar from "../ui/Navbar/Navbar";
 import News from "../ui/News/News";
 import Title from "@/ui/Title/Title";
 import Button from "@/ui/Buttons/Button";

@@ -17,7 +17,8 @@ export default function Navbar() {
                         </svg>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[9999] p-2 shadow bg-gradient-red">
-                        <li >
+                    <li><Link href='/vacancy'><p className='text-xl w-max'>Вакансии</p></Link></li>
+                        {/* <li >
                             <details>
                                 <summary ><p className='text-xl w-max'>Вакансии</p></summary>
                                 <ul className="p-2 bg-gradient-red z-10">
@@ -28,7 +29,7 @@ export default function Navbar() {
                                 <li><Link href='/vacancy?category=no-experience'><p className='text-xl w-max'>Без опыта</p></Link></li>
                                 </ul>
                             </details>
-                        </li>
+                        </li> */}
                         <li className='text-xl'><Link href="/news"><p className='text-xl  w-max'>Новости</p></Link></li>
 
                         <li><Link href="/userfull"><p className='text-xl  w-max'>Полезное</p></Link></li>
@@ -49,7 +50,9 @@ export default function Navbar() {
             </div>
             <div className="navbar-center hidden lg:flex text-3xl">
                 <ul className="menu menu-horizontal px-1">
-                    <li>
+                <li><Link href='/vacancy'><p className='text-xl w-max'>Вакансии</p></Link></li>
+
+                    {/* <li>
                         <details>
                         <summary ><p className='text-xl w-max'>Вакансии</p></summary>
                         <ul className="p-2 bg-gradient-red z-10 w-max">
@@ -60,7 +63,7 @@ export default function Navbar() {
                                 <li><Link href='/vacancy?category=noexp'><p className='text-xl w-max'>Без опыта</p></Link></li>
                             </ul>
                         </details>
-                    </li>
+                    </li> */}
                     <li><Link href="/userfull"><p className='text-xl  w-max'>Полезное</p></Link></li>
                     <li className='text-xl'><Link href="/news">Новости</Link></li>
                     <li>
