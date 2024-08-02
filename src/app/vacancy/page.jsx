@@ -7,7 +7,7 @@ export default function Page(){
 
         <>
          <Title text={'Наши вакансии'} />
-        <ServerVac vacanciesCount={50} enableCategorySwitcher={true}/>
+        <ServerVac vacanciesCount={27} />
 
         </>
     )

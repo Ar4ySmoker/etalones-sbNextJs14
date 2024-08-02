@@ -8,7 +8,8 @@ import Useful from '@/ui/Useful/Useful';
 import { Suspense } from 'react';
 import Loading from '../Loading';
 import ServerVac from '@/ui/ServerVac/ServerVac';
-import NewsList from '@/ui/NewsPrimary/NewsPrimary';
+// import NewsList from '@/ui/NewsPrimary/NewsPrimary';
+import CardNews from '@/ui/CardNews/CardNews';
 
 
 
@@ -18,9 +19,9 @@ const NewsPage = () => {
       <>
   <Title text='Новости'/>
 
-            {/* <CardNews category='journeys' currentNewsId={undefined}  /> */}
+            {/* <NewsList/> */}
             <Suspense fallback={<Loading/>}>
-            <NewsList/>
+            <CardNews category={undefined} currentNewsId={undefined}  />
             </Suspense>
   <FormCallBack/>
   <Title text={'Подобные вакансии'}/>
