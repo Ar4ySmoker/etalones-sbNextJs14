@@ -273,6 +273,17 @@ export default function ServerVac({ vacanciesCount }: ServerVacProps) {
     const observer = useRef<IntersectionObserver>();
     const lastVacancyElementRef = useRef<HTMLDivElement>(null);
 
+    // useEffect(() => {
+    //     if (observer.current) observer.current.disconnect();
+    //     observer.current = new IntersectionObserver(entries => {
+    //         if (entries[0].isIntersecting) {
+    //             setPage((prevPage: number) => prevPage + 1);
+    //         }
+    //     });
+    //     if (lastVacancyElementRef.current) {
+    //         observer.current.observe(lastVacancyElementRef.current);
+    //     }
+    // }, [lastVacancyElementRef.current]);
     useEffect(() => {
         if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver(entries => {
@@ -283,7 +294,8 @@ export default function ServerVac({ vacanciesCount }: ServerVacProps) {
         if (lastVacancyElementRef.current) {
             observer.current.observe(lastVacancyElementRef.current);
         }
-    }, [lastVacancyElementRef.current]);
+        // Зависимость от вакансий, чтобы следить за изменениями списка
+    }, [vacancies]);
 
     // Функция для разделения строки с документами
     const splitDocuments = (documents: string) => {
