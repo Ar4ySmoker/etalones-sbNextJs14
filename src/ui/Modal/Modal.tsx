@@ -26,7 +26,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
 
   return (
     <div className="fixed box-border inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100] p-2  h-full">
-      <div className="rounded shadow-lg relative  overflow-y-auto  max-h-[80vh] w-full max-w-md">
+      <div className="rounded shadow-lg relative   max-h-[80vh] w-full max-w-md">
        
         {React.Children.map(children, child => {
           return React.isValidElement(child)
