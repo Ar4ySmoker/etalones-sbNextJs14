@@ -107,7 +107,7 @@ export default function Navbar() {
                 </div>
             </div>
             <Modal isOpen={isModalOpen} onClose={handleCloseModal} >
-                <AnketaModalContent />
+                <AnketaModalContent onClose={handleCloseModal} />
             </Modal>
         </div>
     )
