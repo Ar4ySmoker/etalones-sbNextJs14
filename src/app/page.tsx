@@ -1,5 +1,3 @@
-'use client';
-
 import FormCallBack from "../ui/FormCallBack/FormCallBack";
 import FormSubscribe from "../ui/FormSubscribe/FormSubscribe";
 import Hero from "../ui/Hero/Hero";
@@ -9,6 +7,7 @@ import Button from "@/ui/Buttons/Button";
 import Link from "next/link";
 import Useful from '@/ui/Useful/Useful';
 import Card from "@/ui/VacancyUrgently/VacancyUrgently";
+
 
 export default function Home() {
 
@@ -34,6 +33,7 @@ export default function Home() {
       <Useful />
       <News />
       <FormSubscribe />
+      
     </div>
   );
 }
