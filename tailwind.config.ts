@@ -9,13 +9,25 @@ const config = {
     './src/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
-    extend: {zIndex: {
+    extend: 
+    {zIndex: {
       '100': '100',
     },
+    animation: {
+      tilt: 'pulse  0.6s linear infinite'
+    },
+    keyframes: {
+      tilt: {
+        '0%, 50%, 75%': { transform: 'rotate(0deg)' },
+        '50%': { transform: 'scale(5.5rem)' },
+        '75%': { transform: 'scaleY(.5)'},
+}
+},
       backgroundImage:  {
         'gradient-red': 'linear-gradient(to right, rgba(97, 28, 21, 1), rgba(225, 42, 24, 1))',
       },
       colors: {
+        
         myred: {
           light: '#AF4444',
           default: '#AF0707',

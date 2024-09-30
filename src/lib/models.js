@@ -107,20 +107,52 @@ type: String
 })
 const candidateSchema = new mongoose.Schema({
   source:{
-type: String
+  type: String
   },
+  avatar:{
+  name: String,
+  data: Buffer,
+  contentType: String
+},
   name: {
-type: String,
+  type: String,
   },
   phone:{
-    type: String,
+  type: String,
   },
   time:{
   type: String,  
   },
   currentPage:{
-type: String,
-  }
+  type: String,
+  },
+  locations: {
+  type: String,
+    
+  },
+  professions: [{
+  name:  String,
+  experience: String,
+  }],
+  documents: [{ 
+  docType: String,
+  dateOfIssue: String,
+  dateExp: String,
+  numberDoc: String
+  }],
+  langue:{
+  name: String,
+  level: String,
+   },
+   comment: [{
+    text: {
+  type: String
+    },
+    date: {
+  type: Date,
+  default: Date.now
+    }
+  }],
 },
 { timestamps: true }
 )
@@ -152,6 +184,17 @@ const newsSchema = new mongoose.Schema({
   }],
 }, { timestamps: true });
 
+const professionSchema = new mongoose.Schema({
+  name: {
+type: String,
+unique: true,
+  },
+  category: {
+    type: String,
+  },
+}
+)
+export const Profession = mongoose.models.Profession || mongoose.model("Profession", professionSchema);
 export const News = mongoose.models.News || mongoose.model("News", newsSchema);
 export const Reviews = mongoose.models.Reviews || mongoose.model("Reviews", reviewsShema);
 export const VacancyOnServer = mongoose.models.VacancyOnServer || mongoose.model("VacancyOnServer", vacancyOnServerShema);

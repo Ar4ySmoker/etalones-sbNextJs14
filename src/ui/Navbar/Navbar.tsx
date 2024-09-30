@@ -1,12 +1,23 @@
+'use client'
 import Logo from '@/svg/Logo.svg'
 import Link from 'next/link'
 import { Instagram } from '@/svg/instagram'
 import { Telegram } from '@/svg/telegram'
 import { Viber } from '@/svg/viber'
 import { Phone } from '@/svg/phone'
+import Modal from '../Modal/Modal'
+import { useState } from 'react'
+import AnketaModalContent from '../Modal/AnketaModalContent'
 
 
 export default function Navbar() {
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+      };
+      const handleCloseModal = () => {
+        setIsModalOpen(false);
+      };
     return (
         <div className='navbar text-white bg-gradient-red text-xl sticky top-0 z-100'>
             <div className="navbar-start">
@@ -43,6 +54,9 @@ export default function Navbar() {
                                 </ul>
                             </details>
                         </li>
+                        {/* <li><Link href="/anketa"><p className='text-xl  w-max'>Заполнить анкету</p></Link></li> */}
+                        <li><div onClick={() => handleOpenModal()}>Открыть модальное окно</div></li>
+
                         <li><Link href="/contacts"><p className='text-xl  w-max'>Контакты</p></Link></li>
                     </ul>
                 </div>
@@ -76,6 +90,9 @@ export default function Navbar() {
                             </ul>
                         </details>
                     </li>
+                    {/* <li><Link href="/anketa"><p className='text-xl  w-max animate-pulse'>Заполнить анкету</p></Link></li> */}
+                    <li><div onClick={() => handleOpenModal()}>Открыть модальное окно</div></li>
+
                     <li className='text-xl'><Link href="/contacts">Контакты</Link></li>
                 </ul>
             </div>
@@ -89,6 +106,11 @@ export default function Navbar() {
                     </ul>
                 </div>
             </div>
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal} >
+                <AnketaModalContent />
+            </Modal>
         </div>
     )
 }
+
+
