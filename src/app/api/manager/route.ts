@@ -16,6 +16,7 @@ export const GET = async (request: NextRequest) => {
       totalCount: managers.length,
     };
 
+    
     return new NextResponse(JSON.stringify(response), { status: 200 });
   } catch (error) {
     console.error("Error in fetching:", error);
