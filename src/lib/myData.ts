@@ -2,6 +2,7 @@ import { ManagerField } from "./definitions";
 import { Manager } from "./models";
 import { connectToDB } from "./utils";
 
+
 export const fetchManager = async (): Promise<ManagerField[]> => {
     try {
         await connectToDB();
