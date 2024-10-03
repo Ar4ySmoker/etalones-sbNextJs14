@@ -16,6 +16,7 @@ export const fetchManager = async (): Promise<ManagerField[]> => {
             whatsapp: manager.whatsapp || "", // Добавляем пустую строку по умолчанию
             image: manager.image, // Если image существует, оно уже должно быть типизировано
         }));
+        
     } catch (err) {
         console.log(err);
         throw new Error("Failed to fetch managers!");
