@@ -21,4 +21,5 @@ export const GET = async (request: NextRequest) => {
     console.error("Error in fetching:", error);
     return new NextResponse("Error in fetching: " + error, { status: 500 });
   }
+  
 };
