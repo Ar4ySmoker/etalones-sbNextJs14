@@ -29,18 +29,6 @@ export default function Navbar() {
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[9999] p-2 shadow bg-gradient-red">
                     <li><Link href='/vacancy'><p className='text-xl w-max'>Вакансии</p></Link></li>
-                        {/* <li >
-                            <details>
-                                <summary ><p className='text-xl w-max'>Вакансии</p></summary>
-                                <ul className="p-2 bg-gradient-red z-10">
-                                <li><Link href='/vacancy'><p className='text-xl w-max'>Смотреть все</p></Link></li>
-                                <li><Link href='/vacancy?category=indor'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
-                                <li><Link href='/vacancy?category=outdor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
-                                <li><Link href='/vacancy?category=krovl'><p className='text-xl w-max'>Кровля/Фасады</p></Link></li>
-                                <li><Link href='/vacancy?category=no-experience'><p className='text-xl w-max'>Без опыта</p></Link></li>
-                                </ul>
-                            </details>
-                        </li> */}
                         <li className='text-xl'><Link href="/news"><p className='text-xl  w-max'>Новости</p></Link></li>
 
                         <li><Link href="/userfull"><p className='text-xl  w-max'>Полезное</p></Link></li>
@@ -55,7 +43,7 @@ export default function Navbar() {
                             </details>
                         </li>
                         {/* <li><Link href="/anketa"><p className='text-xl  w-max'>Заполнить анкету</p></Link></li> */}
-                        <li><div onClick={() => handleOpenModal()}>Открыть модальное окно</div></li>
+                        <li><div onClick={() => handleOpenModal() } className='text-xl  w-max'>Заполнить анкету</div></li>
 
                         <li><Link href="/contacts"><p className='text-xl  w-max'>Контакты</p></Link></li>
                     </ul>
@@ -65,19 +53,6 @@ export default function Navbar() {
             <div className="navbar-center hidden lg:flex text-3xl">
                 <ul className="menu menu-horizontal px-1">
                 <li><Link href='/vacancy'><p className='text-xl w-max'>Вакансии</p></Link></li>
-
-                    {/* <li>
-                        <details>
-                        <summary ><p className='text-xl w-max'>Вакансии</p></summary>
-                        <ul className="p-2 bg-gradient-red z-10 w-max">
-                                <li><Link href='/vacancy'><p className='text-xl w-max'>Смотреть все</p></Link></li>
-                                <li><Link href='/vacancy?category=indor'><p className='text-xl w-max'>Внутренняя отделка</p></Link></li>
-                                <li><Link href='/vacancy?category=outdor'><p className='text-xl w-max'>Работа на улице</p></Link></li>
-                                <li><Link href='/vacancy?category=krovl'><p className='text-xl w-max'>Кровля/Фасады</p></Link></li>
-                                <li><Link href='/vacancy?category=noexp'><p className='text-xl w-max'>Без опыта</p></Link></li>
-                            </ul>
-                        </details>
-                    </li> */}
                     <li><Link href="/userfull"><p className='text-xl  w-max'>Полезное</p></Link></li>
                     <li className='text-xl'><Link href="/news">Новости</Link></li>
                     <li>
@@ -91,7 +66,7 @@ export default function Navbar() {
                         </details>
                     </li>
                     {/* <li><Link href="/anketa"><p className='text-xl  w-max animate-pulse'>Заполнить анкету</p></Link></li> */}
-                    <li><div onClick={() => handleOpenModal()}>Открыть модальное окно</div></li>
+                    <li><div onClick={() => handleOpenModal()} className='text-xl  w-max'>Заполнить анкету</div></li>
 
                     <li className='text-xl'><Link href="/contacts">Контакты</Link></li>
                 </ul>

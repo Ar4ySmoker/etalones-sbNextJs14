@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const reviewsShema = new mongoose.Schema({
   name:{
@@ -123,6 +124,13 @@ const candidateSchema = new mongoose.Schema({
   time:{
   type: String,  
   },
+  age:{
+    type: Date,
+  },
+  langue:{
+    name: String,
+    level: String,
+   },
   currentPage:{
   type: String,
   },
@@ -131,14 +139,14 @@ const candidateSchema = new mongoose.Schema({
     
   },
   professions: [{
-  name:  String,
-  experience: String,
+    name:  String,
+    experience: String,
   }],
+  drivePermis: [{
+  type: String,
+}],
   documents: [{ 
-  docType: String,
-  dateOfIssue: String,
-  dateExp: String,
-  numberDoc: String
+ type: String,
   }],
   langue:{
   name: String,
@@ -190,6 +198,9 @@ type: String,
 unique: true,
   },
   category: {
+    type: String,
+  },
+  experience: {
     type: String,
   },
 }
