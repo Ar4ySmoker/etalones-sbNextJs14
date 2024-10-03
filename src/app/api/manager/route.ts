@@ -6,7 +6,7 @@ export const GET = async (request: NextRequest) => {
   try {
     await connectToDB();
 
-    const managers = await Manager.find({})
+    const managers = await Manager.find({onSite: true})
       .sort({ createdAt: -1 });
 
     console.log("Fetched managers:", managers);
