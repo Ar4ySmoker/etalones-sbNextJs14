@@ -125,7 +125,7 @@ export const POST = async (request: Request) => {
   } catch (error) {
     return new NextResponse(
       JSON.stringify({
-        message: "Error in creating user",
+        message: "Error in creating candidate",
         error,
       }),
       {

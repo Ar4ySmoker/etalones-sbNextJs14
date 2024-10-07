@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import Button from "../Buttons/Button";
 import { ArrowBigDownDash, ArrowBigUpDash } from "lucide-react";
 import CMultiSelect from "../Multiselect/Multiselect";
-import { sendMessage } from "@/app/api/telegram/telegram";
+import { sendMessage, sendPhoto } from "@/app/api/telegram/telegram";
+import { useRouter } from "next/navigation";
 
 const drivePermis = [
     { label: "В", value: "B" },
@@ -51,6 +52,7 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
             level: ''
         }
     });
+    const router = useRouter();
 
     useEffect(() => {
         const fetchProfessions = async () => {
@@ -101,14 +103,89 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
         }
         return age;
     };
+    // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    //     event.preventDefault();
+    
+    //     const { name, phone, locations } = formData;
+    //     const language = formData.langue.name;
+    //     const languageLevel = formData.langue.level;
+    //     const birthDate = new Date(formData.age);
+    //     const calculatedAge = calculateAge(birthDate);
+    
+    //     // Составляем сообщение
+    //     const message = `
+    //     Имя: ${name}
+    //     Телефон: ${phone}
+    //     Профессии: 
+    //     ${professionsWithExperience.map(prof => `${prof.name} (${prof.experience})`).join('<br>')}
+    //     Возраст: ${calculatedAge}
+    //     Местоположение: ${locations}
+    //     Язык: ${language}
+    //     Уровень языка: ${languageLevel}
+    //     Документы: ${selectedDocuments.map(d => d.value).join(', ')}
+    //     Категории В/У: ${selectedDrive.map(d => d.label).join(', ')}
+    // `;
+    
+    
+    //     setIsLoading(true);
+    
+    //     try {
+    //         // Если файл загружен, отправляем его с сообщением
+    //         if (file) {
+    //             const arrayBuffer = await file.arrayBuffer();
+    //             const buffer = Buffer.from(arrayBuffer);
+    //             await sendPhoto(buffer, message); // Отправляем фото с описанием
+    //         } else {
+    //             // Если файла нет, просто отправляем текстовое сообщение
+    //             await sendMessage(message);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    //             await sendMessage(phone);
+    //         }
+    
+    //         // Отправка данных на сервер
+    //         const body = {
+    //             ...formData,
+    //             avatar: {
+    //                 name: file?.name,
+    //                 data: file ? await file.arrayBuffer() : null,
+    //                 contentType: file?.type,
+    //             },
+    //             professions: professionsWithExperience,
+    //             langue: {
+    //                 name: formData.langue.name,
+    //                 level: formData.langue.level
+    //             },
+    //             documents: selectedDocuments.map(doc => doc.value) || [],
+    //             drivePermis: selectedDrive.map(d => d.value) || [],
+    //             age: new Date(formData.age),
+    //         };
+    
+    //         const response = await fetch('/api/addCandidate', { 
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify(body)
+    //         });
+    
+    //         const result = await response.json();
+    //         if (response.ok) {
+    //             console.log('Candidate created:', result);
+    //         } else {
+    //             // setErrorMessage(result.message); // Устанавливаем сообщение об ошибке
+    //         }
+    //     } catch (error) {
+    //         console.error('Ошибка отправки сообщения:', error);
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
+      const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { name, phone, age, locations } = formData;
+    const { name, phone, locations } = formData;
     const language = formData.langue.name;
     const languageLevel = formData.langue.level;
     const birthDate = new Date(formData.age);
     const calculatedAge = calculateAge(birthDate);
+
     const body = {
         ...formData,
         avatar: {
@@ -131,32 +208,49 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
     }
 
 
-    console.log('Отправляемые данные:', body);
-    console.log('Профессии и опыт:', professionsWithExperience);
     try {
         const message = `
         Имя: ${name}
-        Телефон: ${phone}
-        Профессии: 
-        ${professionsWithExperience.map(prof => `${prof.name} (${prof.experience})`).join(', ')}
-        Возраст: ${calculatedAge} 
-        Местоположение: ${locations}
-        Язык: ${language}
-        Уровень языка: ${languageLevel}
-        Документы: ${selectedDocuments.map(d => d.value).join(', ')}
-        Категории В/У: ${selectedDrive.map(d => d.label).join(', ')}
+    Телефон: ${phone}
+    Возраст: ${calculatedAge} 
+    
+    Профессии: 
+- ${professionsWithExperience.map(prof => `${prof.name} (${prof.experience})`).join('\n -')}
+    
+    Местоположение: ${locations}
+        
+    Язык: ${language}
+    Уровень языка: ${languageLevel}
+        
+    Документы: 
+- ${selectedDocuments.map(d => d.value).join('\n -')}
+        
+    Категории В/У: 
+- ${selectedDrive.map(d => d.label).join('\n -')}
       `;
       setIsLoading(true);
-      await sendMessage(message);
+      if (file) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const buffer = Buffer.from(arrayBuffer);
+                    await sendPhoto(buffer, message); // Отправляем фото с описанием
+                    await sendMessage(phone);
 
+                } else {
+                    // Если файла нет, просто отправляем текстовое сообщение
+                    await sendMessage(message);
+    
+                    await sendMessage(phone);
+                }
         const response = await fetch('/api/addCandidate', { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
         });
         const result = await response.json();
-        if (response.ok) {
-          console.log('Candidate created:', result);
+        if (response.ok) {            
+            onClose()
+            alert("Ваша анкета успешно отправлена, мы свяжемся с вами в ближайшее время")
+            console.log('Candidate created:', result);
      
         } else {
           // setErrorMessage(result.message); // Устанавливаем сообщение об ошибке
@@ -165,6 +259,8 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
         console.error('Network error:', error);
       }
 };
+
+    
 
 
     return (
@@ -178,7 +274,8 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
                                     <Image
                                         src={URL.createObjectURL(file)}
                                         alt="Uploaded file"
-                                        width={150} height={150}
+                                        width={300} height={300}
+                                        className="rounded-md"
                                     />
                                 ) : (
                                     <Image
@@ -280,10 +377,11 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
                                             <div className="text-sm font-bold">Уровень</div>
                                             <select className="select w-full max-w-xs select-success select-sm" name="langueLvl" onChange={(e) => handleLangueChange('level', e.target.value)}>
                                                 <option disabled value="">Уровень знание языка</option>
-                                                <option>Уровень A1</option>
-                                                <option>Уровень A2</option>
-                                                <option>Уровень B1</option>
-                                                <option>Уровень B2</option>
+                                                <option value='A1'>Уровень A1</option>
+                                                <option value='A2'>Уровень A2</option>
+                                                <option value='B1'>Уровень B1</option>
+                                                <option value='B2'>Уровень B2</option>
+                                               
                                             </select>
                                         </div>
                                     </label>
@@ -303,3 +401,68 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
         </div>
     );
 }
+
+
+//   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+//     event.preventDefault();
+//     const { name, phone, age, locations } = formData;
+//     const language = formData.langue.name;
+//     const languageLevel = formData.langue.level;
+//     const birthDate = new Date(formData.age);
+//     const calculatedAge = calculateAge(birthDate);
+//     const body = {
+//         ...formData,
+//         avatar: {
+//             name: file?.name,
+//             data: file ? await file.arrayBuffer() : null,
+//             contentType: file?.type,
+//         },
+//         professions: professionsWithExperience,
+//         langue: {
+//             name: formData.langue.name,
+//             level: formData.langue.level
+//         },
+//         documents: selectedDocuments.map(doc => doc.value) || [],
+//         drivePermis: selectedDrive.map(d => d.value) || [],
+//         age: new Date(formData.age), 
+//     };
+//     if (file) {
+//         const arrayBuffer = await file.arrayBuffer();
+//         body.avatar.data = Buffer.from(arrayBuffer);
+//     }
+
+
+//     console.log('Отправляемые данные:', body);
+//     console.log('Профессии и опыт:', professionsWithExperience);
+//     try {
+//         const message = `
+//         Имя: ${name}
+//         Телефон: ${phone}
+//         Профессии: 
+//         ${professionsWithExperience.map(prof => `${prof.name} (${prof.experience})`).join(', ')}
+//         Возраст: ${calculatedAge} 
+//         Местоположение: ${locations}
+//         Язык: ${language}
+//         Уровень языка: ${languageLevel}
+//         Документы: ${selectedDocuments.map(d => d.value).join(', ')}
+//         Категории В/У: ${selectedDrive.map(d => d.label).join(', ')}
+//       `;
+//       setIsLoading(true);
+//       await sendMessage(message);
+
+//         const response = await fetch('/api/addCandidate', { 
+//           method: 'POST',
+//           headers: { 'Content-Type': 'application/json' },
+//           body: JSON.stringify(body)
+//         });
+//         const result = await response.json();
+//         if (response.ok) {
+//           console.log('Candidate created:', result);
+     
+//         } else {
+//           // setErrorMessage(result.message); // Устанавливаем сообщение об ошибке
+//         }
+//       } catch (error) {
+//         console.error('Network error:', error);
+//       }
+// };
