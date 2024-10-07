@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Button from "../Buttons/Button";
 import { ArrowBigDownDash, ArrowBigUpDash } from "lucide-react";
 import CMultiSelect from "../Multiselect/Multiselect";
+import { sendMessage } from "@/app/api/telegram/telegram";
 
 const drivePermis = [
     { label: "В", value: "B" },
@@ -24,13 +25,15 @@ const documents1 = [
 ];
 
 const experienceOptions = [
+    { label: "Без опыта", value: "Без опыта"},
     { label: "Меньше года", value: "Меньше года" },
-    { label: "Больше года", value: "Больше года" },
-    { label: "Больше двух лет", value: "Больше двух лет" },
-    { label: "Более пяти лет", value: "Более пяти лет" },
+    { label: "Более года", value: "Более года" },
+    { label: "От 2-х лет", value: "От 2-х лет" },
+    { label: "Более 10-ти лет", value: "Более 10-ти лет" },
 ];
 
 export default function AnketaModalContent({ onClose }: { onClose: () => void }) {
+    const [isLoading, setIsLoading] = useState(false);
     const [file, setFile] = useState<File | null>(null);
     const [selectedDrive, setSelectedDrive] = useState<{ label: string; value: string }[]>([]);
     const [selectedDocuments, setSelectedDocuments] = useState<{ label: string; value: string }[]>([]);
@@ -89,9 +92,23 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
         setFormData({ ...formData, [name]: value });
     };
 
+    const calculateAge = (birthDate: Date) => {
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Форма отправляется", formData);
+    const { name, phone, age, locations } = formData;
+    const language = formData.langue.name;
+    const languageLevel = formData.langue.level;
+    const birthDate = new Date(formData.age);
+    const calculatedAge = calculateAge(birthDate);
     const body = {
         ...formData,
         avatar: {
@@ -106,7 +123,7 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
         },
         documents: selectedDocuments.map(doc => doc.value) || [],
         drivePermis: selectedDrive.map(d => d.value) || [],
-        age: new Date(formData.age), // Преобразуем строку в объект Date
+        age: new Date(formData.age), 
     };
     if (file) {
         const arrayBuffer = await file.arrayBuffer();
@@ -115,7 +132,23 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
 
 
     console.log('Отправляемые данные:', body);
+    console.log('Профессии и опыт:', professionsWithExperience);
     try {
+        const message = `
+        Имя: ${name}
+        Телефон: ${phone}
+        Профессии: 
+        ${professionsWithExperience.map(prof => `${prof.name} (${prof.experience})`).join(', ')}
+        Возраст: ${calculatedAge} 
+        Местоположение: ${locations}
+        Язык: ${language}
+        Уровень языка: ${languageLevel}
+        Документы: ${selectedDocuments.map(d => d.value).join(', ')}
+        Категории В/У: ${selectedDrive.map(d => d.label).join(', ')}
+      `;
+      setIsLoading(true);
+      await sendMessage(message);
+
         const response = await fetch('/api/addCandidate', { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

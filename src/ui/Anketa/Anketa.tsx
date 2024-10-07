@@ -23,7 +23,7 @@ const documents = [
     { label: "Песель", value: "Песель" },
 ];
 
-export default function AnketaModalContent({ onClose }: { onClose: () => void }) {
+export default function AnketaModalContent() {
     const [file, setFile] = useState<File | null>(null);
     const [selectedDrive, setSelectedDrive] = useState<{ label: string; value: string }[]>([]);
     const [selectedDocuments, setSelectedDocuments] = useState<{ label: string; value: string }[]>([]);
@@ -178,10 +178,7 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
                                 )}
                             </details>
 
-                            <div className="flex justify-center gap-3">
-                                <Button text="Закрыть" onClick={onClose} className="bg-myred-default text-white btn-outline" />
-                                <Button text="Отправить" className="btn-primary" />
-                            </div>
+                           
                         </div>
                     </form>
                 </div>
