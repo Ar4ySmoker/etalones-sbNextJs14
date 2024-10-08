@@ -8,6 +8,8 @@ import Footer from "@/ui/Footer/Footer";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from "@vercel/analytics/react"
 import { ModalProvider } from "@/context/ModalContext";
+import { GoogleAnalytics } from '@next/third-parties/google'
+
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
@@ -33,6 +35,7 @@ export default function RootLayout({
         <LoadingProvider>
         <VacancyContextProvider>
           {children}
+          <GoogleAnalytics gaId="AW-16715855087" />
           <Footer />
           </VacancyContextProvider>
         </LoadingProvider>

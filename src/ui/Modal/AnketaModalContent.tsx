@@ -18,11 +18,16 @@ const drivePermis = [
 ];
 
 const documents1 = [
-    { label: "Паспорт ЕС", value: "Паспорт ЕС" },
-    { label: "Польская Виза", value: "Польская Виза" },
-    { label: "Карта Побыту", value: "Карта Побыту" },
-    { label: "Биометрический Паспорт(UA)", value: "Биометрический Паспорт(UA)" },
+    { label: "Виза", value: "Виза" },
     { label: "Песель", value: "Песель" },
+    { label: "Паспорт", value: "Паспорт" },
+    { label: "Паспорт ЕС", value: "Паспорт ЕС"},
+    { label: "Паспорт Биометрия Украины", value: "Паспорт Биометрия Украины" },
+    { label: "Параграф 24", value: "Параграф 24" },
+    { label: "Карта побыту", value: "Карта побыту" },
+    { label: "Геверба", value: "Геверба" },
+    { label: "Карта сталого побыта", value: "Карта сталого побыта" },
+    { label: "Приглашение", value: "Приглашение" },
 ];
 
 const experienceOptions = [
@@ -37,7 +42,9 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
     const [isLoading, setIsLoading] = useState(false);
     const [file, setFile] = useState<File | null>(null);
     const [selectedDrive, setSelectedDrive] = useState<{ label: string; value: string }[]>([]);
-    const [selectedDocuments, setSelectedDocuments] = useState<{ label: string; value: string }[]>([]);
+    // const [selectedDocuments, setSelectedDocuments] = useState<{ label: string; value: string }[]>([]);
+    const [documentEntries, setDocumentEntries] = useState<{ docType: string; dateOfIssue: string; dateExp: string; numberDoc: string }[]>([]);
+
     const [isAdditionalDataOpen, setIsAdditionalDataOpen] = useState(false);
     const [professions, setProfessions] = useState<{ _id: string; name: string }[]>([]);
     const [professionsWithExperience, setProfessionsWithExperience] = useState([{ name: '', experience: '' }]);
@@ -198,10 +205,17 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
             name: formData.langue.name,
             level: formData.langue.level
         },
-        documents: selectedDocuments.map(doc => doc.value) || [],
+        documents: documentEntries.map(entry => ({
+            docType: entry.docType,
+            dateOfIssue: entry.dateOfIssue,
+            dateExp: entry.dateExp,
+            numberDoc: entry.numberDoc,
+        })),
         drivePermis: selectedDrive.map(d => d.value) || [],
         age: new Date(formData.age), 
     };
+
+    const documentsString = documentEntries.map(entry => entry.docType).join('\n -');
     if (file) {
         const arrayBuffer = await file.arrayBuffer();
         body.avatar.data = Buffer.from(arrayBuffer);
@@ -223,7 +237,7 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
     Уровень языка: ${languageLevel}
         
     Документы: 
-- ${selectedDocuments.map(d => d.value).join('\n -')}
+- ${documentsString}
         
     Категории В/У: 
 - ${selectedDrive.map(d => d.label).join('\n -')}
@@ -386,7 +400,16 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
                                         </div>
                                     </label>
                                     <CMultiSelect options={drivePermis} placeholder="Категории В/У" className="w-full my-1 text-sm"     onChange={(selected: string[]) => setSelectedDrive(selected.map(value => ({ label: value, value })))} />
-                                    <CMultiSelect options={documents1} placeholder="Выберите документы" className="w-full my-1 text-sm" onChange={(selected: string[]) => setSelectedDocuments(selected.map(value => ({ label: value, value })))} />
+                                    <CMultiSelect options={documents1} placeholder="Выберите документы" className="w-full my-1 text-sm" 
+                                    onChange={(selected: string[]) => {
+                                        const newEntries = selected.map(value => ({
+                                            docType: value,
+                                            dateOfIssue: '',
+                                            dateExp: '',
+                                            numberDoc: '',
+                                        }));
+                                        setDocumentEntries(newEntries);
+                                    }}  />
                                 </div>
                             </div>
 
