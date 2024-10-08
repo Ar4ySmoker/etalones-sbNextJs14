@@ -146,7 +146,10 @@ const candidateSchema = new mongoose.Schema({
   type: String,
 }],
   documents: [{ 
- type: String,
+    docType: String,
+    dateOfIssue: String,
+    dateExp: String,
+    numberDoc: String
   }],
   langue:{
   name: String,
