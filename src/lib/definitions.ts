@@ -118,7 +118,7 @@ export type LocationField = {
 export type ProfessionField = {
   _id: string;
   name: string;
-  description: String;
+  category: string;
 };
 export type DocumentField = {
   _id: string;
