@@ -1,3 +1,4 @@
+'use client'
 import { useState } from "react";
 import Button from "../Buttons/Button";
 import { sendMessage } from "@/app/api/telegram/telegram";
