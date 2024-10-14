@@ -9,6 +9,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from "@vercel/analytics/react"
 import { ModalProvider } from "@/context/ModalContext";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { Provider } from "./Provider";
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
     // data-theme="cupcake"
     >
       <body className={montserrat.className}>
+        <Provider>
       <ModalProvider>
 
         <Navbar />
@@ -42,6 +44,7 @@ export default function RootLayout({
         <Analytics />
           <SpeedInsights />
           </ModalProvider>
+          </Provider>
       </body>
     </html>
   );

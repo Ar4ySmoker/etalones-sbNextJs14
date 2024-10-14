@@ -1,16 +1,62 @@
 import mongoose from "mongoose";
-import { type } from "os";
+
+const userSchema = new mongoose.Schema(
+  {
+    id:{
+      type: String
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: [true, "Email is required"],
+    },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+      select: false,
+    },
+    name: {
+      type: String,
+      required: [true, "Fullname is required"],
+      minLength: [3, "fullname must be at least 3 characters"],
+      maxLength: [25, "fullname must be at most 25 characters"],
+    },
+    phone: {
+      type: String,
+      default: "",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const reviewsShema = new mongoose.Schema({
   name:{
     type: String
   },
   rating:{
-    type: String
+    type: Number
   },
   comment:{
     type: String
-  }
+  },
+  image: {
+    type: String, // Поле для URL изображения
+  },
+  userId: {
+    type: String, // Храните идентификатор пользователя
+  },
+  email:{
+    type: String
+  },
+  likes: [{
+    type: String
+  }],  
+  dislikes: [{
+    type: String
+  }], 
+
 },{ timestamps: true })
 
 const managerShema = new mongoose.Schema({
@@ -208,6 +254,7 @@ unique: true,
   },
 }
 )
+export const User =  mongoose.models.User || mongoose.model("User", userSchema);
 export const Profession = mongoose.models.Profession || mongoose.model("Profession", professionSchema);
 export const News = mongoose.models.News || mongoose.model("News", newsSchema);
 export const Reviews = mongoose.models.Reviews || mongoose.model("Reviews", reviewsShema);
