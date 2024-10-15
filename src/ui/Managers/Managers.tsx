@@ -2,31 +2,31 @@
 // src/pages/managers.tsx
 import React, { useEffect, useState } from 'react';
 import ManagerCard from '@/ui/ManagerCard/ManagerCard';
-import { fetchManager } from '@/lib/myData';
-import { ManagerField } from '@/lib/definitions';
+// import { fetchManager } from '@/lib/myData';
+// import { ManagerField } from '@/lib/definitions';
 
 const ManagersPage: React.FC = () => {
-    const [managers, setManagers] = useState<ManagerField[]>([]);
+    // const [managers, setManagers] = useState<ManagerField[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchManagers = async () => {
-            try {
-                const data = await fetchManager();
-                setManagers(data);
-            } catch (error) {
-                console.error("Failed to fetch managers:", error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchManagers = async () => {
+    //         try {
+    //             // const data = await fetchManager();
+    //             // setManagers(data);
+    //         } catch (error) {
+    //             console.error("Failed to fetch managers:", error);
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     };
 
-        fetchManagers();
-    }, []);
+    //     fetchManagers();
+    // }, []);
 
-    if (isLoading) {
-        return <p>Загрузка...</p>;
-    }
+    // if (isLoading) {
+    //     return <p>Загрузка...</p>;
+    // }
 
     return (
         <div>
