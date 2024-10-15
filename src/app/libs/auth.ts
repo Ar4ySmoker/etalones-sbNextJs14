@@ -1,39 +1,41 @@
 // import { connectToDB } from "@/lib/utils";
-// import { User } from "@/lib/models";
+// import { Manager } from "@/lib/models"; // Убедитесь, что у вас есть модель Manager
 // import type { NextAuthOptions } from "next-auth";
 // import CredentialsProvider from "next-auth/providers/credentials";
 // import GoogleProvider from "next-auth/providers/google";
-// // import bcrypt from "bcryptjs";
-// import bcrypt from "bcryptjs"; 
 
-// export const authOptions: NextAuthOptions  = {
+// export const authOptions: NextAuthOptions = {
 //   providers: [
 //     GoogleProvider({
 //       clientId: process.env.AUTH_GOOGLE_ID as string,
-//       clientSecret: process.env.AUTH_GOOGLE_SECRET as string
+//       clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
+//       profile: (profile) => {
+//         return {
+//           id: profile.sub, // ID пользователя Google
+//           name: profile.name,
+//           email: profile.email,
+//           image: profile.picture,
+//         };
+//       },
 //     }),
 //     CredentialsProvider({
 //       name: "Credentials",
-//       id: "credentials",
 //       credentials: {
 //         email: { label: "Email", type: "text", placeholder: "jsmith" },
 //         password: { label: "Password", type: "password" },
 //       },
 //       async authorize(credentials) {
 //         await connectToDB();
-//         const userFound = await User.findOne({
+
+//         const managerFound = await Manager.findOne({
 //           email: credentials?.email,
-//         }).select("+password");
+//         });
 
-//         if (!userFound) throw new Error("Invalid Email");
+//         if (!managerFound) {
+//           throw new Error("Access denied: Email not found for any manager.");
+//         }
 
-//         const passwordMatch = await bcrypt.compare(
-//           credentials!.password,
-//           userFound.password
-//         );
-
-//         if (!passwordMatch) throw new Error("Invalid Password");
-//         return userFound;
+//         return managerFound; // Возвращаем данные менеджера
 //       },
 //     }),
 //   ],
@@ -44,21 +46,14 @@
 //     strategy: "jwt",
 //   },
 //   callbacks: {
-//     async jwt({ token, user, session, trigger }) {
-//       if (trigger === "update" && session?.name) {
-//         token.name = session.name;
-//       }
-
-//       if (trigger === "update" && session?.email) {
-//         token.email = session.email;
-//       }
-
+//     async jwt({ token, user }) {
 //       if (user) {
-//         const u = user as unknown as any;
 //         return {
 //           ...token,
-//           id: u.id,
-//           phone: u.phone,
+//           id: user.id, // ID пользователя
+//           name: user.name,
+//           email: user.email,
+//           image: user.image,
 //         };
 //       }
 //       return token;
@@ -67,20 +62,18 @@
 //       return {
 //         ...session,
 //         user: {
-//           ...session.user,
-//           _id: token.id,
+//           id: token.id, // ID пользователя
 //           name: token.name,
-//           phone: token.phone,
-//         }
+//           email: token.email,
+//           image: token.image,
+//         },
 //       };
 //     },
 //   },
 // };
-// pages/api/auth/[...nextauth].ts
-
 import { connectToDB } from "@/lib/utils";
 import { Manager } from "@/lib/models"; // Убедитесь, что у вас есть модель Manager
-import type { NextAuthOptions } from "next-auth";
+import type { NextAuthOptions, Session } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -133,21 +126,19 @@ export const authOptions: NextAuthOptions = {
           id: user.id, // ID пользователя
           name: user.name,
           email: user.email,
-          image: user.image,
+          image: user.image ?? null, // Убедитесь, что image имеет правильный тип
         };
       }
       return token;
     },
     async session({ session, token }) {
-      return {
-        ...session,
-        user: {
-          id: token.id, // ID пользователя
-          name: token.name,
-          email: token.email,
-          image: token.image,
-        },
-      };
+      session.user = {
+        id: token.id as string | undefined, // ID пользователя
+        name: token.name as string | null | undefined,
+        email: token.email as string | null | undefined,
+        image: token.image as string | null | undefined, // Убедитесь, что image имеет правильный тип
+      } as Session['user']; // Приведение типа
+      return session;
     },
   },
 };
