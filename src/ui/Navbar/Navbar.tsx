@@ -56,7 +56,6 @@ export default function Navbar() {
                     <li><Link href="/userfull"><p className='text-xl  w-max'>Полезное</p></Link></li>
                     <li className='text-xl'><Link href="/news">Новости</Link></li>
                     <li className='text-xl'><Link href="/reviews">Отзывы</Link></li>
-
                     <li>
                         <details>
                         <summary ><p className='text-xl w-max'>Соискателям</p></summary>
