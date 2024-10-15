@@ -1,167 +1,9 @@
-// 'use client';
-// import { useSession, signIn, signOut } from "next-auth/react";
-// import Button from "@/ui/Buttons/Button";
-// import { useState, useEffect } from "react";
-// import TextInput from "@/ui/TextInput/TextInput";
-// import Image from "next/image";
-
-// interface Review {
-//     image: any;
-//     _id: string; // ID для каждого отзыва
-//     name: string;
-//     rating: number;
-//     comment: string;
-//     createdAt: string; 
-// }
-
-// const images = [
-//     "/reviews/4.jpg",
-//     "/reviews/5.jpg",
-//     "/reviews/6.jpg",
-// ];
-
-// export default function Page() {
-//     const { data: session } = useSession();
-//     const [reviews, setReviews] = useState<Review[]>([]);
-//     const [comment, setComment] = useState("");
-//     const [rating, setRating] = useState(5);
-
-//     const fetchReviews = async () => {
-//         try {
-//             const res = await fetch(`/api/reviews`);
-//             const data = await res.json();
-//             setReviews(data.reviews);
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     };
-
-//     useEffect(() => {
-//         fetchReviews();
-//     }, []);
-
-//     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-//         e.preventDefault();
-//         if (!session) {
-//             return;
-//         }
-
-//         const body = {
-//             name: session.user?.name, // Получаем имя пользователя из сессии
-//             rating,
-//             comment,
-//             image: session.user?.image,
-//             userId: session.user?.id,
-//         };
-
-//         try {
-//             const res = await fetch(`http://localhost:3000/api/reviews`, {
-//                 method: "POST",
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                 },
-//                 body: JSON.stringify(body),
-//             });
-
-//             if (!res.ok) {
-//                 throw new Error("Failed to submit review");
-//             }
-
-//             await fetchReviews();
-//             setComment("");
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     };
-
-//     return (
-//         <>
-//             <div className="carousel carousel-center bg-neutral rounded-box w-full space-x-4 p-4">
-//                 {images.map((src, index) => (
-//                     <div className="carousel-item" key={index}>
-//                         <Image
-//                             src={src}
-//                             alt={`Review ${index + 1}`}
-//                             className="rounded-box"
-//                             width={250}
-//                             height={200}
-//                         />
-//                     </div>
-//                 ))}
-//             </div>
-
-//             {session ? (
-//                 <div>
-//                     <h3>Добро пожаловать, {session.user?.name}!</h3>
-//                     <form onSubmit={handleSubmit} className="mx-auto w-max flex flex-col mt-5">
-//                         <div className="rating mx-auto my-2">
-//                             {[1, 2, 3, 4, 5].map((star) => (
-//                                 <input
-//                                     key={star}
-//                                     type="radio"
-//                                     name="rating"
-//                                     value={star}
-//                                     className="mask mask-star-2 bg-orange-400"
-//                                     checked={rating === star}
-//                                     onChange={() => setRating(star)}
-//                                 />
-//                             ))}
-//                         </div>
-//                         <textarea
-//                             value={comment}
-//                             onChange={(e) => setComment(e.target.value)}
-//                             placeholder="Напишите отзыв..."
-//                             className="textarea textarea-bordered textarea-lg w-max mb-3"
-//                         />
-//                         <Button text="Отправить отзыв" isSubmit />
-//                     </form>
-//                 </div>
-//             ) : (
-//                 <Button text="Оставить отзыв" onClick={() => signIn("google")} />
-//             )}
-
-//             <div className="mt-10 flex flex-wrap">
-//                 {reviews.map((review) => (
-//                     <div key={review._id} className="card bg-base-100 w-96 shadow-xl mx-auto mb-5">
-//                         <div className="card-body">
-//                         {review.image && (
-//             <Image
-//                 src={review.image}
-//                 alt={`${review.name}'s picture`}
-//                 className="rounded-full w-12 h-12 mr-3"
-//                 width={48}
-//                 height={48}
-//             />
-//         )}
-//                             <h2 className="card-title">{review.name}</h2>
-//                             <p>{review.comment}</p>
-//                             <div className="card-actions justify-end">
-//                                 <div className="rating">
-//                                     {[...Array(5)].map((_, i) => (
-//                                         <input
-//                                             key={i}
-//                                             type="radio"
-//                                             name={`rating-${review._id}`}
-//                                             className="mask mask-star-2 bg-orange-400"
-//                                             defaultChecked={i < review.rating}
-//                                             readOnly
-//                                             disabled
-//                                         />
-//                                     ))}
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 ))}
-//             </div>
-//         </>
-//     );
-// }
 'use client';
 import { useSession, signIn } from "next-auth/react";
 import Button from "@/ui/Buttons/Button";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { ThumbsDown, ThumbsUp } from "lucide-react";
 
 interface Review {
     image: any;
@@ -227,7 +69,10 @@ export default function Page() {
         };
 
         try {
-            const res = await fetch(`http://localhost:3000/api/reviews`, {
+            // const res = await fetch(`http://localhost:3000/api/reviews`, 
+            const res = await fetch(`https://www.etalones.com/api/reviews`, 
+
+                {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -254,7 +99,10 @@ export default function Page() {
 
     const handleDelete = async (reviewId: string) => {
         try {
-            const res = await fetch(`http://localhost:3000/api/reviews`, {
+            // const res = await fetch(`http://localhost:3000/api/reviews`, 
+            const res = await fetch(`https://www.etalones.com/api/reviews`, 
+
+                {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -285,7 +133,10 @@ export default function Page() {
         };
 
         try {
-            const res = await fetch(`http://localhost:3000/api/reviews`, {
+            // const res = await fetch(`http://localhost:3000/api/reviews`, 
+            const res = await fetch(`https://www.etalones.com/api/reviews`, 
+
+                {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -336,7 +187,8 @@ export default function Page() {
     
     return (
         <>
-            <div className="carousel carousel-center bg-neutral rounded-box w-full space-x-4 p-4">
+        <h1 className="text-center text-3xl font-bold my-3">Отзывы Etalones S&B</h1>
+            <div className="carousel carousel-center bg-neutral  w-full space-x-4 p-4">
                 {images.map((src, index) => (
                     <div className="carousel-item" key={index}>
                         <Image
@@ -386,11 +238,11 @@ export default function Page() {
                 placeholder="Напишите отзыв..."
                 className="textarea textarea-bordered textarea-lg w-max mb-3"
             />
-            <Button text={editingReviewId ? "Обновить отзыв" : "Отправить отзыв"} isSubmit />
+            <Button text={editingReviewId ? "Обновить отзыв" : "Отправить отзыв"} isSubmit  />
         </form>
     </div>
 ) : (
-    <Button text="Оставить отзыв" onClick={() => signIn("google")} />
+    <Button text="Оставить отзыв" onClick={() => signIn("google")} className="w-max flex self-center mx-auto btn-success"/>
 )}
 
           
@@ -432,46 +284,42 @@ export default function Page() {
                 </div>
                 <p>{review.comment}</p>
             </div>
-            <div className="flex gap-1 w-full justify-end items-center p-3">
+            {/* <div className="flex gap-1 w-full justify-end items-center p-3">
         <p>{review.likes.length}</p>
         {session && (
             <button onClick={() => handleLikeOrDislike(review, 'like')}>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill={review.likes.includes(session.user.id) ? "#FB923C" : "none"}
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-thumbs-up text-shadow-md"
-                >
-                    <path d="M7 10v12" />
-                    <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
-                </svg>
+                <ThumbsDown                    
+                fill={review.likes.includes(session.user.id) ? "#FB923C" : "none"}
+                />
+                
             </button>
         )}
         <p>{review.dislikes.length}</p>
         {session && (
             <button onClick={() => handleLikeOrDislike(review, 'dislike')}>
-                <svg xmlns="http://www.w3.org/2000/svg" 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill={review.dislikes.includes(session.user.id) ? "#FB923C" : "none"}
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                className="lucide lucide-thumbs-down">
-                <path d="M17 14V2"/>
-                <path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg>
-               
+                <ThumbsUp fill={review.dislikes.includes(session.user.id) ? "#FB923C" : "none"}/>       
             </button>
         )}
-    </div>
+    </div> */}
+<div className="flex gap-1 w-full justify-end items-center p-3">
+    <p>{review.likes.length}</p>
+    <button onClick={() => session ? handleLikeOrDislike(review, 'like') : signIn("google")}>
+        <ThumbsDown 
+            fill={review.likes.includes(session?.user?.id ?? '') ? "#FB923C" : "none"} // Используем оператор ?? для значения по умолчанию
+            style={{ cursor: session ? 'pointer' : 'not-allowed' }} 
+        />
+    </button>
+    
+    <p>{review.dislikes.length}</p>
+    <button onClick={() => session ? handleLikeOrDislike(review, 'dislike') : signIn("google")}>
+        <ThumbsUp 
+            fill={review.dislikes.includes(session?.user?.id ?? '') ? "#FB923C" : "none"} 
+            style={{ cursor: session ? 'pointer' : 'not-allowed' }} 
+        />
+    </button>
+
+    {!session && <span className="text-sm text-gray-500">Войдите, чтобы взаимодействовать</span>}
+</div>
 
         </div>
     ))}

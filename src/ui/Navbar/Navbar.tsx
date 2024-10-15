@@ -30,7 +30,7 @@ export default function Navbar() {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[9999] p-2 shadow bg-gradient-red">
                     <li><Link href='/vacancy'><p className='text-xl w-max'>Вакансии</p></Link></li>
                         <li className='text-xl'><Link href="/news"><p className='text-xl  w-max'>Новости</p></Link></li>
-
+                        <li className='text-xl'><Link href="/reviews"><p className='text-xl  w-max'>Отзывы</p></Link></li>
                         <li><Link href="/userfull"><p className='text-xl  w-max'>Полезное</p></Link></li>
 
                         <li>
@@ -55,6 +55,8 @@ export default function Navbar() {
                 <li><Link href='/vacancy'><p className='text-xl w-max'>Вакансии</p></Link></li>
                     <li><Link href="/userfull"><p className='text-xl  w-max'>Полезное</p></Link></li>
                     <li className='text-xl'><Link href="/news">Новости</Link></li>
+                    <li className='text-xl'><Link href="/reviews">Отзывы</Link></li>
+
                     <li>
                         <details>
                         <summary ><p className='text-xl w-max'>Соискателям</p></summary>
