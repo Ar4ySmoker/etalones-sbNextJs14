@@ -7,7 +7,7 @@
 //     try {
 //         await connectToDB();
         
-//         const managers: Array<ManagerField> = await Manager.find({}).lean();
+//         const managers: Array<ManagerField> = await Manager.find({onSite: true}).lean();
 //         return managers.map(manager => ({
 //             _id: manager._id.toString(),
 //             name: manager.name,
