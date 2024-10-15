@@ -13,6 +13,7 @@ import { Provider } from "./Provider";
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
+
 export const metadata: Metadata = {
   title: "Etalones S&B | Работа в Европе",
   description: "Легальная работа в Европе, в компании Etalones S&B, высокая зарплата, большой выбор вакансий, отличные условия проживания и многое другое!!!! Начать работать в Европе в строительстве вместе с Etalones S&B!!!",
