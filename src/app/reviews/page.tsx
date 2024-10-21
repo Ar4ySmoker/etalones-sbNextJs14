@@ -284,23 +284,7 @@ export default function Page() {
                 </div>
                 <p>{review.comment}</p>
             </div>
-            {/* <div className="flex gap-1 w-full justify-end items-center p-3">
-        <p>{review.likes.length}</p>
-        {session && (
-            <button onClick={() => handleLikeOrDislike(review, 'like')}>
-                <ThumbsDown                    
-                fill={review.likes.includes(session.user.id) ? "#FB923C" : "none"}
-                />
-                
-            </button>
-        )}
-        <p>{review.dislikes.length}</p>
-        {session && (
-            <button onClick={() => handleLikeOrDislike(review, 'dislike')}>
-                <ThumbsUp fill={review.dislikes.includes(session.user.id) ? "#FB923C" : "none"}/>       
-            </button>
-        )}
-    </div> */}
+           
 <div className="flex gap-1 w-full justify-end items-center p-3">
     <p>{review.likes.length}</p>
     <button onClick={() => session ? handleLikeOrDislike(review, 'like') : signIn("google")}>
