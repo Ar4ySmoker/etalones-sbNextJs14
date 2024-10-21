@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { ModalProvider } from "@/context/ModalContext";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { Provider } from "./Provider";
+import NotificationManager from "@/notification/NotificationManager";
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
@@ -33,7 +34,7 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <Provider>
       <ModalProvider>
-
+      <NotificationManager>
         <Navbar />
         <LoadingProvider>
         <VacancyContextProvider>
@@ -44,6 +45,7 @@ export default function RootLayout({
           <Footer />
           </VacancyContextProvider>
         </LoadingProvider>
+        </NotificationManager>
         <Analytics />
           <SpeedInsights />
           </ModalProvider>

@@ -1,12 +1,13 @@
 'use client';
 import TextInput from "../TextInput/TextInput";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "../Buttons/Button";
 import { ArrowBigDownDash, ArrowBigUpDash } from "lucide-react";
 import CMultiSelect from "../Multiselect/Multiselect";
 import { sendMessage, sendPhoto } from "@/app/api/telegram/telegram";
 import { useRouter } from "next/navigation";
+import NotificationContext from "@/context/NotificationContext";
 
 const drivePermis = [
     { label: "В", value: "B" },
@@ -60,6 +61,7 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
         }
     });
     const router = useRouter();
+    const addNotification = useContext(NotificationContext);
 
     useEffect(() => {
         const fetchProfessions = async () => {
@@ -261,17 +263,38 @@ export default function AnketaModalContent({ onClose }: { onClose: () => void })
           body: JSON.stringify(body)
         });
         const result = await response.json();
-        if (response.ok) {            
-            onClose()
-            alert("Ваша анкета успешно отправлена, мы свяжемся с вами в ближайшее время")
-            console.log('Candidate created:', result);
-     
+        if (response.ok) {  
+            onClose()          
+            addNotification({
+                title: "Обновлено",
+                content: "Ваша анкета успешно отправлена, мы свяжемся с вами в ближайшее время",
+                type: "success",
+                id: ""
+              });
+              router.refresh();
         } else {
+            onClose()
+            addNotification({
+                title: "Обновлено",
+                content: "Анкета отправлена повторно.",
+                type: "warning",
+                id: ""
+              });
+              router.refresh();
           // setErrorMessage(result.message); // Устанавливаем сообщение об ошибке
         }
       } catch (error) {
+        onClose() 
+        addNotification({
+            title: "Ошибка",
+            content: "Анкета отправлена, но запись не прошла, свяжитесь с вашим менеджером.",
+            type: "error",
+            id: ""
+          });
         console.error('Network error:', error);
       }
+      router.refresh();
+
 };
 
     
