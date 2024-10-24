@@ -6,8 +6,6 @@ import { WhatsApp } from '@/svg/whatsapp';
 import FormCallBack from '@/ui/FormCallBack/FormCallBack';
 import Useful from '@/ui/Useful/Useful';
 import ManagerCard from '../ManagerCard/ManagerCard';
-import Footer from '@/ui/Footer/Footer';
-import Navbar from '@/ui/Navbar/Navbar';
 import Title from '@/ui/Title/Title';
 import SameOneVacancy from '@/ui/SameOneVacancy/SameOneVacancy';
 import { ManagerField } from '@/lib/definitions';
