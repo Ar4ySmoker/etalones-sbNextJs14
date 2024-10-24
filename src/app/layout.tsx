@@ -5,8 +5,6 @@ import { LoadingProvider } from '@/app/context/LoadingContext';
 import { VacancyContextProvider } from "./context/VacancyContext";
 import Navbar from "@/ui/Navbar/Navbar";
 import Footer from "@/ui/Footer/Footer";
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Analytics } from "@vercel/analytics/react"
 import { ModalProvider } from "@/context/ModalContext";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { Provider } from "./Provider";
@@ -38,16 +36,14 @@ export default function RootLayout({
         <Navbar />
         <LoadingProvider>
         <VacancyContextProvider>
-          <GoogleAnalytics gaId="AW-16715855087" />
           <GoogleTagManager gtmId="G-TPYV7NLY4X" />
           {children}
+          <GoogleAnalytics gaId="AW-16715855087" />
 
           <Footer />
           </VacancyContextProvider>
         </LoadingProvider>
         </NotificationManager>
-        <Analytics />
-          <SpeedInsights />
           </ModalProvider>
           </Provider>
       </body>
