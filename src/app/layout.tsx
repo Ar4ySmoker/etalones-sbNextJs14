@@ -36,7 +36,7 @@ export default function RootLayout({
         <Navbar />
         <LoadingProvider>
         <VacancyContextProvider>
-          <GoogleTagManager gtmId="G-TPYV7NLY4X" />
+          <GoogleTagManager gtmId="GTM-KQNL8RM8" />
           {children}
           <GoogleAnalytics gaId="AW-16715855087" />
 
